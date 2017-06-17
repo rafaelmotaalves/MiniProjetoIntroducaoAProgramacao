@@ -1,7 +1,5 @@
 package ClassesBasicas;
 
-import Exceptions.salarioInvalidoException;
-
 public class Funcionario extends Pessoa {
 	private double salario;
 	public Funcionario(String cpf,String nome,double salario) {
