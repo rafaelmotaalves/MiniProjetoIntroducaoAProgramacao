@@ -1,9 +1,9 @@
 package ClassesBasicas;
 public class Piloto extends Funcionario{
 	private Aeroporto localizacao;
-	public Piloto(String cpf,String nome,double salario,Aeroporto localizacao){
+	public Piloto(String cpf,String nome,double salario){
 		super(cpf,nome,salario);
-		this.localizacao=localizacao;
+		this.localizacao=null;
 	}
 	public Aeroporto getLocalizacao(){
 		return this.localizacao;
