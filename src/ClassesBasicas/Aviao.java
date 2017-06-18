@@ -4,7 +4,7 @@ public class Aviao {
 		private int id;
 		private String modelo;
 		private int capacidade;
-		private boolean manutencao;
+		private boolean manut;
 		private Aeroporto aeroporto;
 		public  Aviao(int id, String modelo, int capacidade, Aeroporto aeroporto){
 			this.setID(id);
