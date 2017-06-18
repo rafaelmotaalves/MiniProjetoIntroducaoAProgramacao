@@ -1,23 +1,23 @@
 package ClassesBasicas;
 
 public class Aviao {
-		private int ID;
+		private int id;
 		private String modelo;
 		private int capacidade;
-		private boolean manutencao;
+		private boolean manut;
 		private Aeroporto aeroporto;
-		public  Aviao(int ID, String modelo, int capacidade, Aeroporto aeroporto){
-			this.setID(ID);
+		public  Aviao(int id, String modelo, int capacidade, Aeroporto aeroporto){
+			this.setID(id);
 			this.setModelo(modelo);
 			this.setCapacidade(capacidade);
 			this.setManutencao(false);
 			this.setAeroporto(aeroporto);
 		}
 		public int getID() {
-			return ID;
+			return id;
 		}
-		public void setID(int iD) {
-			ID = iD;
+		public void setID(int id) {
+			id = id;
 		}
 		public String getModelo() {
 			return modelo;
