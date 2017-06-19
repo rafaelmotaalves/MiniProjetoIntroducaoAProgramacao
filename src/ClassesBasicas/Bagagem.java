@@ -9,7 +9,11 @@ public class Bagagem {
 	private Passageiro passageiro;
 	
 	public Bagagem(int cod, double peso, Voo voo, Aeroporto aeroporto, Passageiro passageiro) {
+<<<<<<< HEAD
 		this.Cod = cod;
+=======
+		Cod = cod;
+>>>>>>> 5038bc8169e820b586658e1901edddf9495940c4
 		this.peso = peso;
 		this.voo = voo;
 		this.aeroporto = aeroporto;
