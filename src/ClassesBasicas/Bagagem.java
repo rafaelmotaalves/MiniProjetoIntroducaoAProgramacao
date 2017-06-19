@@ -9,8 +9,7 @@ public class Bagagem {
 	private Passageiro passageiro;
 	
 	public Bagagem(int cod, double peso, Voo voo, Aeroporto aeroporto, Passageiro passageiro) {
-		super();
-		Cod = cod;
+		this.Cod = cod;
 		this.peso = peso;
 		this.voo = voo;
 		this.aeroporto = aeroporto;
