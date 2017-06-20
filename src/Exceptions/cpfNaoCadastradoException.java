@@ -1,4 +1,4 @@
-package Exceptions;
+package exceptions;
 
 public class cpfNaoCadastradoException extends Exception {
 	public cpfNaoCadastradoException(){

@@ -1,6 +1,6 @@
-package ClassesBasicas;
-import Repositorios.RepositorioPessoasArray;
-import Repositorios.RepositorioPessoasLista;
+package classesBasicas;
+import repositorios.RepositorioPessoasArray;
+import repositorios.RepositorioPessoasLista;
 
 public class Voo {
 

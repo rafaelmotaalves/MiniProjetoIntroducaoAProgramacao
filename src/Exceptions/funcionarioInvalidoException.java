@@ -1,4 +1,4 @@
-package Exceptions;
+package exceptions;
 
 public class funcionarioInvalidoException extends Exception {
 	public funcionarioInvalidoException(){

@@ -1,5 +1,5 @@
-package Interfaces;
-import ClassesBasicas.Bagagem;
+package interfaces;
+import classesBasicas.Bagagem;
 
 public interface RepositorioBagagem {
 	void inserir(Bagagem bagagem);

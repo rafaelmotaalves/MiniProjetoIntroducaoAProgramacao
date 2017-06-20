@@ -1,4 +1,4 @@
-package Exceptions;
+package exceptions;
 
 public class cpfInvalidoException extends Exception {
 	public cpfInvalidoException(){

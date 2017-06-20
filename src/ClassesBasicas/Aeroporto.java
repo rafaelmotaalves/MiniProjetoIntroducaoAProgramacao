@@ -1,4 +1,4 @@
-package ClassesBasicas;
+package classesBasicas;
 
 public class Aeroporto {
 	private String cidade;

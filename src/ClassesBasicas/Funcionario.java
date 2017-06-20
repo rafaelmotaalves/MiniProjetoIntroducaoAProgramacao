@@ -1,4 +1,4 @@
-package ClassesBasicas;
+package classesBasicas;
 
 public class Funcionario extends Pessoa {
 	private double salario;

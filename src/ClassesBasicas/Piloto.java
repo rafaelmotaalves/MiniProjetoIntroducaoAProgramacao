@@ -1,4 +1,4 @@
-package ClassesBasicas;
+package classesBasicas;
 public class Piloto extends Funcionario{
 	private Aeroporto localizacao;
 	public Piloto(String cpf,String nome,double salario){

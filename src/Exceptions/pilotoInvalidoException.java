@@ -1,4 +1,4 @@
-package Exceptions;
+package exceptions;
 
 public class pilotoInvalidoException extends Exception {
 	public pilotoInvalidoException(){

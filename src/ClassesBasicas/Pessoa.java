@@ -1,4 +1,4 @@
-package ClassesBasicas;
+package classesBasicas;
 
 public abstract class Pessoa {
 	private String cpf;
