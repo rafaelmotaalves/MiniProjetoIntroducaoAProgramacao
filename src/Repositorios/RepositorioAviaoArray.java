@@ -1,16 +1,22 @@
 package Repositorios;
 import ClassesBasicas.Aviao;
+import ClassesBasicas.Pessoa;
 import Exceptions.*;
 import Interfaces.RepositorioAviao;
 public class RepositorioAviaoArray implements RepositorioAviao {
 
 	private Aviao[] aviao;
 	private int indice;
+	private int tamanhoArray;
 	public void repositorioAviaoArray(int tamanhoArray){
+		this.tamanhoArray=tamanhoArray;
 		this.aviao=new Aviao[tamanhoArray];
 		this.indice=0;
 	}
 	public boolean existe(int ID){
+		if(estaCheio()){
+			duplicarTamanho();	
+		}
 		boolean existe = false;
 		for(int c=0; c<this.indice; c++){
 			if(aviao[c].getID()==ID){
@@ -18,6 +24,20 @@ public class RepositorioAviaoArray implements RepositorioAviao {
 			}
 		}
 		return existe; 
+	}
+	public int getTamanho(){
+		return aviao.length;
+	}
+	public void duplicarTamanho(){
+		Aviao[] aux = new Aviao[tamanhoArray*2];
+		for(int i=0; i<this.tamanhoArray ;i++){
+			aux[i]=this.aviao[i];
+		}
+		this.aviao=aux;
+		this.tamanhoArray=this.tamanhoArray*2;
+	}
+	public boolean estaCheio(){
+		return this.indice==this.tamanhoArray;
 	}
 	public void inserir(Aviao aviao) throws AviaoJaCadastradoException {
 		if(existe(aviao.getID())){

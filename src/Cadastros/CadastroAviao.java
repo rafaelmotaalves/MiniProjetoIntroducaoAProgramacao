@@ -7,28 +7,19 @@ public class CadastroAviao {
 	CadastroAviao(RepositorioAviao rep){
 		this.aviaos=rep;
 	}
-	public void cadastrarAviao(Aviao aviao) throws AviaoJaCadastradoException, aviaoInvalidoException{
-		if(aviao instanceof Aviao){
-			this.aviaos.inserir(aviao);
-		}
-		else{
-			throw new aviaoInvalidoException();
+	public void cadastrarAviao(Aviao aviao) throws AviaoJaCadastradoException, capacidadeInvalidoException{
+		if(aviao.getCapacidade()<=0){
+			throw new capacidadeInvalidoException();
 		}
 	}
-	public void removerAviao(int ID) throws IdNaoCadastradaException, aviaoInvalidoException{
-		if(aviaos.procurar(ID) instanceof Aviao){
-			aviaos.remover(ID);
-		}
-		else{
-			throw new aviaoInvalidoException();
+	public void removerAviao(int ID) throws IdNaoCadastradaException, capacidadeInvalidoException{
+		if(aviaos.procurar(ID).getCapacidade()<=0){
+			throw new capacidadeInvalidoException();
 		}
 	}
-	public void atualizarDadosAviao(int ID, Aviao aviao) throws IdNaoCadastradaException, aviaoInvalidoException{
-		if(this.aviaos.procurar(ID) instanceof Aviao){
-			this.aviaos.atualizar(ID, aviao);
-		}
-		else{
-			throw new aviaoInvalidoException();
+	public void atualizarDadosAviao(int ID, Aviao aviao) throws IdNaoCadastradaException, capacidadeInvalidoException{
+		if(aviao.getCapacidade()<=0){
+			throw new capacidadeInvalidoException();
 		}
 	}
 	
