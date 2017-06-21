@@ -3,32 +3,32 @@ import ClassesBasicas.Aviao;
 import Exceptions.*;
 import Interfaces.RepositorioAviao;
 public class CadastroAviao {
-	private RepositorioAviao aviao;
+	private RepositorioAviao aviaos;
 	CadastroAviao(RepositorioAviao rep){
-		this.aviao=rep;
+		this.aviaos=rep;
 	}
-	public void cadastrarAviao(Aviao aviao){
+	public void cadastrarAviao(Aviao aviao) throws AviaoJaCadastradoException, aviaoInvalidoException{
 		if(aviao instanceof Aviao){
-			this.aviao.inserir(aviao);
+			this.aviaos.inserir(aviao);
 		}
 		else{
-			System.out.println("erro");
+			throw new aviaoInvalidoException();
 		}
 	}
-	public void removerAviao(int ID){
-		if(aviao.procurar(ID) instanceof Aviao){
-			aviao.remover(ID);
+	public void removerAviao(int ID) throws IdNaoCadastradaException, aviaoInvalidoException{
+		if(aviaos.procurar(ID) instanceof Aviao){
+			aviaos.remover(ID);
 		}
 		else{
-			System.out.println("erro");
+			throw new aviaoInvalidoException();
 		}
 	}
-	public void atualizarDadosAviao(int ID, Aviao aviao){
-		if(aviao.procurar(ID) instanceof Aviao){
-			aviao.atualizar(ID, aviao);
+	public void atualizarDadosAviao(int ID, Aviao aviao) throws IdNaoCadastradaException, aviaoInvalidoException{
+		if(this.aviaos.procurar(ID) instanceof Aviao){
+			this.aviaos.atualizar(ID, aviao);
 		}
 		else{
-			System.out.println("erro");
+			throw new aviaoInvalidoException();
 		}
 	}
 	
