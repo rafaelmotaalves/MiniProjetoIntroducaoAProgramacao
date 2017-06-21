@@ -4,11 +4,15 @@ public class Aeroporto {
 	private String cidade;
 	private int capacidade;
 	private String codigo;
+	private int distancia;
+	private int qntDeAvioesAtual;
 	
-	public Aeroporto(String cidade, String codigo, int capacidade){
+	public Aeroporto(String cidade, String codigo, int capacidade, int distancia){
 		this.cidade = cidade;
 		this.codigo = codigo;
 		this.capacidade = capacidade;
+		this.distancia = distancia;
+		this.qntDeAvioesAtual = 0;
 	}
 
 	public String getCidade() {
@@ -35,5 +39,19 @@ public class Aeroporto {
 		this.codigo = codigo;
 	}
 	
+	public int getDistancia() {
+		return distancia;
+	}
+
+	public void setDistancia(int distancia) {
+		this.distancia = distancia;
+	}
 	
+	public int getQntDeAvioesAtual() {
+		return qntDeAvioesAtual;
+	}
+
+	public void setQntDeAvioesAtual(int qntDeAvioesAtual) {
+		this.qntDeAvioesAtual = qntDeAvioesAtual;
+	}
 }
