@@ -13,8 +13,8 @@ public class RepositorioAeroportoArray implements RepositorioAeroportos {
 		indice = 0;
 	}
 	
-	public void inserir(String cidade, String codigo, int capacidade) {
-		this.aeroportos [indice] = new Aeroporto(cidade, codigo, capacidade);
+	public void inserir(Aeroporto aeroporto) {
+		this.aeroportos [indice] = aeroporto;
 		this.indice++;
 		if (indice >= this.aeroportos.length){
 			Aeroporto [] aeroportoaux = new Aeroporto[2*this.aeroportos.length];
@@ -41,10 +41,17 @@ public class RepositorioAeroportoArray implements RepositorioAeroportos {
 		}
 	}
 
-	public void atualizar(String codigo, int capacidade) throws AeroportoNotFoundException {
-		Aeroporto aeroporto;
-		aeroporto = this.procurar(codigo);
-		aeroporto.setCapacidade(capacidade);
+	public void atualizar(String codigo, Aeroporto aeroporto) throws AeroportoNotFoundException {
+		boolean achou = false;
+		for(int i = 0; (i < this.indice) && !achou; i++){
+			if(codigo.equals(aeroportos[i].getCodigo())){
+				aeroportos[i] = aeroporto;
+				achou = true;
+			}
+		}
+		if(!achou) {
+			throw new AeroportoNotFoundException();
+		}
 	}
 
 	public void remover(String codigo) throws AeroportoNotFoundException {
