@@ -1,9 +1,9 @@
-package repositorios;
+package Repositorios;
 
-import classesBasicas.Pessoa;
-import exceptions.cpfJaCadastradoException;
-import exceptions.cpfNaoCadastradoException;
-import interfaces.RepositorioPessoas;
+import ClassesBasicas.Pessoa;
+import Exceptions.cpfJaCadastradoException;
+import Exceptions.cpfNaoCadastradoException;
+import Interfaces.RepositorioPessoas;
 
 public class RepositorioPessoasArray implements RepositorioPessoas {
 	private Pessoa[] pessoas;

@@ -1,7 +1,7 @@
-package repositorios;
-import classesBasicas.Aviao;
-import interfaces.RepositorioAviao;
-import exceptions.*;
+package Repositorios;
+import ClassesBasicas.Aviao;
+import Interfaces.RepositorioAviao;
+import Exceptions.*;
 public class RepositorioAviaoLista implements RepositorioAviao {
 	private Aviao aviao;
 	private RepositorioAviaoLista proximo;

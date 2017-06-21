@@ -1,6 +1,6 @@
-package interfaces;
-import classesBasicas.Pessoa;
-import exceptions.*;
+package Interfaces;
+import ClassesBasicas.Pessoa;
+import Exceptions.*;
 
 public interface RepositorioPessoas {
 	void inserir(Pessoa pessoa) throws cpfJaCadastradoException;

@@ -1,4 +1,4 @@
-package exceptions;
+package Exceptions;
 
 public class IdNaoCadastradaException extends Exception{
 	public IdNaoCadastradaException(int ID){

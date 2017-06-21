@@ -1,7 +1,8 @@
-package cadastros;
-import classesBasicas.*;
-import exceptions.*;
-import interfaces.RepositorioPessoas;
+package Cadastros;
+import ClassesBasicas.*;
+import Exceptions.*;
+import Interfaces.RepositorioPessoas;
+import Repositorios.*;
 public class CadastroPessoas {
 	private RepositorioPessoas pessoas;
 	CadastroPessoas(RepositorioPessoas rep){

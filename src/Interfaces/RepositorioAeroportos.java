@@ -1,6 +1,6 @@
-package interfaces;
-import classesBasicas.Aeroporto;
-import exceptions.AeroportoNotFoundException;
+package Interfaces;
+import ClassesBasicas.Aeroporto;
+import Exceptions.AeroportoNotFoundException;
 
 public interface RepositorioAeroportos {
 	void inserir(String cidade, String codigo, int capacidade);

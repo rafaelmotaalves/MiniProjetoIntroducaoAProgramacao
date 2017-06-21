@@ -1,7 +1,7 @@
-package interfaces;
-import classesBasicas.Aviao;
-import exceptions.AviaoJaCadastradoException;
-import exceptions.IdNaoCadastradaException;
+package Interfaces;
+import ClassesBasicas.Aviao;
+import Exceptions.AviaoJaCadastradoException;
+import Exceptions.IdNaoCadastradaException;
 
 public interface RepositorioAviao {
 	void inserir(Aviao aviao) throws AviaoJaCadastradoException;

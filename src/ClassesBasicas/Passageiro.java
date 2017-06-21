@@ -1,4 +1,4 @@
-package classesBasicas;
+package ClassesBasicas;
 
 public class Passageiro extends Pessoa {
 	private int milhas;
