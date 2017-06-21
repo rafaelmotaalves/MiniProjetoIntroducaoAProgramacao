@@ -1,10 +1,12 @@
 package Interfaces;
 import ClassesBasicas.Bagagem;
+import Exceptions.bagagemJaExistenteException;
+import Exceptions.bagagemNaoExisteException;
 
 public interface RepositorioBagagem {
-	void inserir(Bagagem bagagem);
-	Bagagem procurar(int Cod);
-	void atualizar(int Cod, Bagagem bagagem);
-	void remover(int Cod);
+	void inserir(Bagagem bagagem) throws bagagemJaExistenteException;
+	Bagagem procurar(int cod) throws bagagemNaoExisteException;
+	void atualizar(int cod, Bagagem bagagem) throws bagagemNaoExisteException;
+	void remover(int cod) throws bagagemNaoExisteException;
 	boolean existe (int Cod);
 }
