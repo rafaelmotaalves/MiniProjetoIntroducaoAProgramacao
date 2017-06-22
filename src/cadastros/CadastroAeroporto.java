@@ -1,4 +1,4 @@
-package Cadastros;
+package cadastros;
 import ClassesBasicas.Aeroporto;
 import Repositorios.RepositorioAeroportoArray;
 import Repositorios.RepositorioAeroportoLista;

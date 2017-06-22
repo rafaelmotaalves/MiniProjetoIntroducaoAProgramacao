@@ -1,4 +1,4 @@
-package Cadastros;
+package cadastros;
 import ClassesBasicas.Aviao;
 import Exceptions.*;
 import Interfaces.RepositorioAviao;

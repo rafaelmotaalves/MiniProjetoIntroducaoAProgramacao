@@ -1,4 +1,4 @@
-package Cadastros;
+package cadastros;
 import ClassesBasicas.*;
 import Exceptions.*;
 import Interfaces.RepositorioPessoas;
