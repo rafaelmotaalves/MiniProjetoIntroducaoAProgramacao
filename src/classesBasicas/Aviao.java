@@ -17,7 +17,7 @@ public class Aviao {
 			return id;
 		}
 		public void setID(int id) {
-			id = id;
+			this.id = id;
 		}
 		public String getModelo() {
 			return modelo;

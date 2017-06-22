@@ -1,7 +1,4 @@
 package classesBasicas;
-import repositorios.RepositorioPessoasArray;
-import repositorios.RepositorioPessoasLista;
-
 public class Voo {
 
 	private int num;

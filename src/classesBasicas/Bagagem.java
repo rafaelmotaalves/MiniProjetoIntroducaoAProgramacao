@@ -12,7 +12,7 @@ public class Bagagem {
 		this.Cod = cod;
 		Cod = cod;
 		this.peso = peso;
-		this.voo = voo;
+		this.setVoo(voo);
 		this.aeroporto = aeroporto;
 		this.passageiro = passageiro;
 	}
@@ -40,6 +40,14 @@ public class Bagagem {
 	}
 	public void setPassageiro(Passageiro passageiro) {
 		this.passageiro = passageiro;
+	}
+
+	public Voo getVoo() {
+		return voo;
+	}
+
+	public void setVoo(Voo voo) {
+		this.voo = voo;
 	}
 	
 	

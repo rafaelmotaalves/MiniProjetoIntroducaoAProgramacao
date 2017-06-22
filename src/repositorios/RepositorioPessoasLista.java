@@ -38,14 +38,12 @@ public class RepositorioPessoasLista implements RepositorioPessoas {
 
 	public Pessoa procurar(String cpf) throws cpfNaoCadastradoException {
 		Pessoa resultado=null;
-		boolean achei=false;
 		if(!existe(cpf)){
 			throw new cpfNaoCadastradoException();
 		}else{
-			if(this.pessoa!=null && !achei){
+			if(this.pessoa!=null ){
 				if(this.pessoa.getCpf().equals(cpf)){
 					resultado=pessoa;
-					achei=true;
 				}else{
 					this.proximo.procurar(cpf);
 				}
@@ -55,11 +53,10 @@ public class RepositorioPessoasLista implements RepositorioPessoas {
 	}
 
 	public void atualizar(String cpf, Pessoa pessoa) throws cpfNaoCadastradoException {
-		boolean achei=false;
 		if(!existe(cpf)){
 			throw new cpfNaoCadastradoException();
 		}else{
-			if(this.pessoa!=null && !achei){
+			if(this.pessoa!=null){
 				if(this.pessoa.getCpf().equals(cpf)){
 					this.pessoa=pessoa;
 				}else{

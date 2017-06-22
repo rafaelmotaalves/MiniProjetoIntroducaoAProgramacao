@@ -46,7 +46,6 @@ public class RepositorioBagagemArray implements RepositorioBagagem {
 		Bagagem bagagem = null;
 		if (existe(cod)) {
 			boolean chave = true;
-			int pos = 0;
 			for (int i = 0; i < tamanho && chave == true; i++) {
 				if (this.bagagem[i].getCod() == cod) {
 					bagagem = this.bagagem[i];

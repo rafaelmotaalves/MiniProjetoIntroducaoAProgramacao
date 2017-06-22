@@ -6,11 +6,11 @@ public class Programa {
 
 	public static void main(String[] args) throws FileNotFoundException {
 		try{
-			Scanner scanner = new Scanner(new FileReader("config.txt"))
+			Scanner in = new Scanner(new FileReader("config.txt"))
 					.useDelimiter("\\||\\n");
-			String nome = scanner.next();
+			String nome = in.next();
 			System.out.println(nome);
-			scanner.close();
+			in.close();
 		}catch(FileNotFoundException e){
 			System.out.println(e.getMessage());
 	}

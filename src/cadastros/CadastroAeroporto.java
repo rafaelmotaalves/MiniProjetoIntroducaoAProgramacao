@@ -2,8 +2,6 @@ package cadastros;
 import classesBasicas.Aeroporto;
 import exceptions.*;
 import interfaces.RepositorioAeroportos;
-import repositorios.RepositorioAeroportoArray;
-import repositorios.RepositorioAeroportoLista;
 
 public class CadastroAeroporto {
 	private RepositorioAeroportos aeroportos;
@@ -33,8 +31,6 @@ public class CadastroAeroporto {
 	
 	public void decola(String codigo) throws AeroportoNotFoundException, AvioesIndisponiveisNoAeroportoException{
 		int qntAtual = this.aeroportos.procurar(codigo).getQntDeAvioesAtual();
-		int capacidade = this.aeroportos.procurar(codigo).getCapacidade();
-		
 		if(qntAtual == 0){
 			throw new AvioesIndisponiveisNoAeroportoException();
 		} else {

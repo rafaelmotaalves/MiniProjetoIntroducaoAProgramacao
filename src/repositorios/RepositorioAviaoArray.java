@@ -1,6 +1,5 @@
 package repositorios;
 import classesBasicas.Aviao;
-import classesBasicas.Pessoa;
 import exceptions.*;
 import interfaces.RepositorioAviao;
 public class RepositorioAviaoArray implements RepositorioAviao {

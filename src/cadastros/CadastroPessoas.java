@@ -2,7 +2,6 @@ package cadastros;
 import classesBasicas.*;
 import exceptions.*;
 import interfaces.RepositorioPessoas;
-import repositorios.*;
 public class CadastroPessoas {
 	private RepositorioPessoas pessoas;
 	CadastroPessoas(RepositorioPessoas rep){
