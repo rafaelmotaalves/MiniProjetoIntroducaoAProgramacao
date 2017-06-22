@@ -1,9 +1,9 @@
 package cadastros;
-import ClassesBasicas.Aeroporto;
-import Repositorios.RepositorioAeroportoArray;
-import Repositorios.RepositorioAeroportoLista;
-import Interfaces.RepositorioAeroportos;
-import Exceptions.*;
+import classesBasicas.Aeroporto;
+import exceptions.*;
+import interfaces.RepositorioAeroportos;
+import repositorios.RepositorioAeroportoArray;
+import repositorios.RepositorioAeroportoLista;
 
 public class CadastroAeroporto {
 	private RepositorioAeroportos aeroportos;

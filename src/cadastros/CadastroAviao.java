@@ -1,7 +1,7 @@
 package cadastros;
-import ClassesBasicas.Aviao;
-import Exceptions.*;
-import Interfaces.RepositorioAviao;
+import classesBasicas.Aviao;
+import exceptions.*;
+import interfaces.RepositorioAviao;
 public class CadastroAviao {
 	private RepositorioAviao aviaos;
 	CadastroAviao(RepositorioAviao rep){
