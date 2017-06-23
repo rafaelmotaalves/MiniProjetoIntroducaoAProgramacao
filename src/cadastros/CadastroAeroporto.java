@@ -29,6 +29,18 @@ public class CadastroAeroporto {
 		}
 	}
 	
+	public void atualizarCadastroAeroporto(String codigo, Aeroporto aeroporto) throws AeroportoNotFoundException, CapacidadeAeroportoInvalidaException{
+		if(aeroporto.getCapacidade() <= 0) {
+			throw new CapacidadeAeroportoInvalidaException();
+		} else {
+			this.aeroportos.atualizar(codigo, aeroporto);
+		}
+	}
+	
+	public void removerCadastroAeroporto(String codigo) throws AeroportoNotFoundException{
+		this.aeroportos.remover(codigo);
+	}
+	
 	public void decola(String codigo) throws AeroportoNotFoundException, AvioesIndisponiveisNoAeroportoException{
 		int qntAtual = this.aeroportos.procurar(codigo).getQntDeAvioesAtual();
 		if(qntAtual == 0){
