@@ -59,9 +59,9 @@ public class CompanhiaAerea {
 	}
 	
 	//!!!!Metodo nao finalizado!!!!
-	public void executarVoo(Voo voo) throws AeroportoNotFoundException, AeroportoLotadoException{
+	public void executarVoo(Voo voo) throws AeroportoNotFoundException, AeroportoLotadoException, cpfNaoCadastradoException, pilotoInvalidoException{
 		//this.aeroportos.decola(String codigoAeroportoBase);//necessario criar um aeroporto virtual para ser a base de operaçoes do programa
-		this.aeroportos.pousa(voo.getDestino());
+		this.aeroportos.pousa(voo.getDestino().getCodigo());
 		this.pessoas.realocarPiloto(voo.getPiloto(), voo.getDestino());
 	}
 }

@@ -2,12 +2,13 @@ package classesBasicas;
 public class Voo {
 
 	private int num;
-	private String horario, destino;
+	private String horario;
+	private Aeroporto destino;
 	private double preco;
 	private Piloto piloto;
 	private Aviao aviao;
 	
-	public Voo (int num, String horario, double preco, Piloto piloto, Aviao aviao, String destino){
+	public Voo (int num, String horario, double preco, Piloto piloto, Aviao aviao, Aeroporto destino){
 		this.num = num;
 		this.horario = horario;
 		this.preco = preco;
@@ -45,10 +46,10 @@ public class Voo {
 	public void setAviao (Aviao aviao){
 		this.aviao = aviao;
 	}
-	public String getDestino(){
+	public Aeroporto getDestino(){
 		return this.destino;
 	}
-	public void setDestino (String destino){
+	public void setDestino (Aeroporto destino){
 		this.destino = destino;
 	}
 }
