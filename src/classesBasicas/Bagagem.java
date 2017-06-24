@@ -1,27 +1,26 @@
-package classesBasicas;
+
 
 public class Bagagem {
 	
-	private int Cod;
+	private int cod;
 	private double peso;
 	private Voo voo;
 	private Aeroporto aeroporto;
 	private Passageiro passageiro;
 	
 	public Bagagem(int cod, double peso, Voo voo, Aeroporto aeroporto, Passageiro passageiro) {
-		this.Cod = cod;
-		Cod = cod;
-		this.peso = peso;
+		this.setCod(cod);
+		this.setPeso(peso);
 		this.setVoo(voo);
-		this.aeroporto = aeroporto;
-		this.passageiro = passageiro;
+		this.setAeroporto(aeroporto);
+		this.setPassageiro(passageiro);
 	}
 	
 	public int getCod() {
-		return Cod;
+		return cod;
 	}
 	public void setCod(int cod) {
-		Cod = cod;
+		this.cod = cod;
 	}
 	public double getPeso() {
 		return peso;
@@ -49,11 +48,4 @@ public class Bagagem {
 	public void setVoo(Voo voo) {
 		this.voo = voo;
 	}
-	
-	
-	
-	
-	
-	
-
 }
