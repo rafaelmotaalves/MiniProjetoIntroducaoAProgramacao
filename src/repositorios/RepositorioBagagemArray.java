@@ -1,8 +1,9 @@
-package repositorios;
+
 
 import classesBasicas.*;
 import exceptions.bagagemJaExistenteException;
 import exceptions.bagagemNaoExisteException;
+import exceptions.bagagemPesoException;
 import interfaces.RepositorioBagagem;
 
 public class RepositorioBagagemArray implements RepositorioBagagem {
@@ -31,10 +32,12 @@ public class RepositorioBagagemArray implements RepositorioBagagem {
 
 	}
 
-	public void inserir(Bagagem bagagem) throws bagagemJaExistenteException {
+	public void inserir(Bagagem bagagem) throws bagagemJaExistenteException, bagagemPesoException {
 		checaTamanho();
 		if (existe(bagagem.getCod())) {
 			throw new bagagemJaExistenteException();
+		} else if (bagagem.getPeso() < 0) {
+			throw new bagagemPesoException();
 		} else {
 			this.bagagem[index] = bagagem;
 			index++;
@@ -42,7 +45,7 @@ public class RepositorioBagagemArray implements RepositorioBagagem {
 
 	}
 
-	public Bagagem procurar(int cod) throws bagagemNaoExisteException{
+	public Bagagem procurar(int cod) throws bagagemNaoExisteException {
 		Bagagem bagagem = null;
 		if (existe(cod)) {
 			boolean chave = true;
@@ -53,7 +56,7 @@ public class RepositorioBagagemArray implements RepositorioBagagem {
 				}
 			}
 			return bagagem;
-		}else{
+		} else {
 			throw new bagagemNaoExisteException();
 		}
 	}
