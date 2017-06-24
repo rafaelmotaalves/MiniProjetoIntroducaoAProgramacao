@@ -5,7 +5,7 @@ import exceptions.*;
 public interface RepositorioVoo {
 
 	void inserir (Voo voo) throws VooJaCadastradoException;
-	Voo procurar (int num) throws VooNaoCadastradoException;
-	void atualizar (int num) throws VooNaoCadastradoException;
-	void remover (int num) throws VooNaoCadastradoException;
+	Voo procurar (String num) throws VooNaoCadastradoException;
+	void atualizar (String num, Voo voo) throws VooNaoCadastradoException;
+	void remover (String num) throws VooNaoCadastradoException;
 }

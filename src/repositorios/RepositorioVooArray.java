@@ -14,13 +14,13 @@ public class RepositorioVooArray {
 		this.indice = 0;
 	}
 	
-	public boolean achou(int num){
+	public boolean achou(String num){
 		if (arrayLotado()){
 			criarNovoArray();
 		}
 		boolean achou = false;
 		for(int i = 0; i < this.indice; i++){
-			if (voos[i].getNum() == num){
+			if (this.voos[i].getNum().equals(num)){
 				achou = true;
 			}
 		}
@@ -53,48 +53,48 @@ public class RepositorioVooArray {
 		}
 	}
 	
-	public Voo procurar (int num) throws VooNaoCadastradoException{
+	public Voo procurar (String num) throws VooNaoCadastradoException{
 		boolean achou = false;
 		Voo voo = null;
 		if (achou(num)){
 			for (int i = 0; i < this.indice && !achou; i++){
-				if (this.voos[i].getNum() == num){
+				if (this.voos[i].getNum().equals(num)){
 					achou = true;
 					voo = voos[i];
 				}
 			}
 		}else{
-			throw new VooNaoCadastradoException(num);
+			throw new VooNaoCadastradoException();
 		}
 		return voo;
 	}
 	
-	public void atualizar (int num, Voo voo) throws VooNaoCadastradoException{
+	public void atualizar (String num, Voo voo) throws VooNaoCadastradoException{
 		if (achou(num)){
 			boolean ok = false;
 			for (int i = 0; i < this.indice && !ok; i++){
-				if (this.voos[i].getNum() == num){
+				if (this.voos[i].getNum().equals(num)){
 					this.voos[i] = voo;
 					ok = true;
 				}
 			}
 		}else{
-			throw new VooNaoCadastradoException(num);
+			throw new VooNaoCadastradoException();
 		}
 	}
 	
-	public void remover (int num) throws VooNaoCadastradoException{
+	public void remover (String num) throws VooNaoCadastradoException{
 		boolean ok = false;
 		if (achou(num)){
 			for (int i = 0; i < this.indice && !ok; i++){
-				if (voos[i].getNum() == num){
+				if (this.voos[i].getNum().equals(num)){
 					this.voos[i] = this.voos[indice];
 					this.indice--;
 					ok = true;
 				}
 			}
 		}else{
-			throw new VooNaoCadastradoException(num);
+			throw new VooNaoCadastradoException();
 		}
 	}
 	
