@@ -33,7 +33,7 @@ public class RepositorioBagagemArray implements RepositorioBagagem {
 
 	}
 
-	//adiciona itens no array
+	//adiciona bagagens no array
 	public void inserir(Bagagem bagagem) throws BagagemJaExistenteException, BagagemPesoException {
 		checaTamanho();
 		if (existe(bagagem.getCod())) {
@@ -64,7 +64,7 @@ public class RepositorioBagagemArray implements RepositorioBagagem {
 		}
 	}
 
-	//atualiza um item do array substituindo o objeto 
+	//atualiza uma bagagem do array substituindo por um novo objeto 
 	public void atualizar(int cod, Bagagem bagagem) throws BagagemNaoExisteException {
 		boolean chave = existe(cod);
 		if (chave == true) {
@@ -82,7 +82,7 @@ public class RepositorioBagagemArray implements RepositorioBagagem {
 
 	}
 
-	//remove um item atráves do código
+	//remove uma bagagem atráves do código
 	public void remover(int cod) throws BagagemNaoExisteException {
 		boolean chave = existe(cod);
 		if (chave == true) {
@@ -100,7 +100,7 @@ public class RepositorioBagagemArray implements RepositorioBagagem {
 		}
 
 	}
-	//remove um item atráves do vôo 
+	//remove as bagagens relacionadas a um vôo
 	public void remover(Voo voo) throws BagagemNaoExisteException {
 
 		for (int i = 0; i <= index; i++) {
@@ -112,7 +112,7 @@ public class RepositorioBagagemArray implements RepositorioBagagem {
 
 	}
 
-	//retorna a existência ou nao do objeto no array
+	//retorna a existência ou nao da bagagem no array
 	public boolean existe(int cod) {
 		boolean existe = false;
 		for (int i = 0; i < tamanho && existe == false; i++) {
