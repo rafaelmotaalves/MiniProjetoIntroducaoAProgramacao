@@ -4,7 +4,8 @@ import exceptions.*;
 import interfaces.RepositorioAviao;
 public class CadastroAviao {
 	private RepositorioAviao aviaos;
-	CadastroAviao(RepositorioAviao rep){
+	
+	public CadastroAviao(RepositorioAviao rep){
 		this.aviaos=rep;
 	}
 	public void cadastrarAviao(Aviao aviao) throws AviaoJaCadastradoException, capacidadePassageirosInvalidoException{
