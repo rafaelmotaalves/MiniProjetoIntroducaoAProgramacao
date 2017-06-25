@@ -4,7 +4,7 @@ import exceptions.*;
 import interfaces.RepositorioPessoas;
 public class CadastroPessoas {
 	private RepositorioPessoas pessoas;
-	CadastroPessoas(RepositorioPessoas rep){
+	public CadastroPessoas(RepositorioPessoas rep){
 		pessoas=rep;
 	}
 	public void cadastrarPassageiro(Pessoa passageiro) throws cpfJaCadastradoException, cpfInvalidoException, passageiroInvalidoException {

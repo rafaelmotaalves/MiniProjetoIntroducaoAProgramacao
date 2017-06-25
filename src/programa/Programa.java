@@ -6,6 +6,7 @@ import classesBasicas.*;
 import interfaces.*;
 import exceptions.*;
 import repositorios.*;
+import cadastros.*;
 
 public class Programa {
 
@@ -15,24 +16,50 @@ public class Programa {
 					.useDelimiter("\\||\\n");
 			String nome = in.next();
 			
-			RepositorioAeroportos aeroportos;
-			RepositorioAviao avioes;
-			RepositorioBagagem bagagens;
-			RepositorioPessoas pessoas;
-			RepositorioVoo voos;
+			RepositorioAeroportos repAeroportos;
+			RepositorioAviao repAvioes;
+			RepositorioBagagem repBagagens;
+			RepositorioPessoas repPessoas;
+			RepositorioVoo repVoos;
+			
 			
 			//in.close();
 			if (nome.toLowerCase().equals("array")){
-				aeroportos = new RepositorioAeroportoArray(5);
-				avioes = new RepositorioAviaoArray(5);
-				bagagens = new RepositorioBagagemArray();
-				pessoas = new RepositorioPessoasArray(5);
-				voos = new RepositorioVooArray(5);
+				repAeroportos = new RepositorioAeroportoArray(5);
+				repAvioes = new RepositorioAviaoArray(5);
+				repBagagens = new RepositorioBagagemArray();
+				repPessoas = new RepositorioPessoasArray(5);
+				repVoos = new RepositorioVooArray(5);
 			} else if(nome.toLowerCase().equals("lista")){
-				
+				repAeroportos = new RepositorioAeroportoLista();
+				repAvioes = new RepositorioAviaoLista();
+				repBagagens = new RepositorioBagagemLista();
+				repPessoas = new RepositorioPessoasLista();
+				repVoos = new RepositorioVooLista();
 			} else {
-				System.out.println("Erro na indicaçao do Repositorio");
+				System.out.println("Erro na indicaçao do Repositorio, repositorio em lista usado como default");
+				repAeroportos = new RepositorioAeroportoLista();
+				repAvioes = new RepositorioAviaoLista();
+				repBagagens = new RepositorioBagagemLista();
+				repPessoas = new RepositorioPessoasLista();
+				repVoos = new RepositorioVooLista();
 			}
+			
+			CadastroAeroporto aeroportos = new CadastroAeroporto(repAeroportos);
+			CadastroAviao avioes = new CadastroAviao(repAvioes);
+			CadastroBagagem bagagens = new CadastroBagagem(repBagagens);
+			CadastroPessoas pessoas = new CadastroPessoas(repPessoas);
+			CadastroVoo voos = new CadastroVoo(repVoos);
+			
+			Aeroporto aeroporto = new Aeroporto("Recife","REC", 10, 0);
+				try {
+					aeroportos.cadastrar(aeroporto);
+				} catch (CapacidadeAeroportoInvalidaException | AeroportoJaCadastradoException e) {
+					System.out.println(e.getMessage());
+				}
+			
+			aeroporto = new Aeroporto("Recife","REC", 10, 0);
+			
 		}catch(FileNotFoundException e){
 			System.out.println(e.getMessage());
 	}
