@@ -7,7 +7,7 @@ public class RepositorioAviaoArray implements RepositorioAviao {
 	private Aviao[] aviao;
 	private int indice;
 	private int tamanhoArray;
-	public void repositorioAviaoArray(int tamanhoArray){
+	public RepositorioAviaoArray(int tamanhoArray){
 		this.tamanhoArray=tamanhoArray;
 		this.aviao=new Aviao[tamanhoArray];
 		this.indice=0;

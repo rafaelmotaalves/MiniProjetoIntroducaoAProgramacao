@@ -87,8 +87,8 @@ public class CompanhiaAerea {
 		this.voos.removerVoo(numero);
 	}
 	
-	public void embarcarPassageiro(String numeroVoo, Passageiro passageiro){
-		this.voos.
+	public void embarcarPassageiro(String numeroVoo, Passageiro passageiro) throws VooNaoCadastradoException, NumVooInvalidoException, capacidadePassageirosInvalidoException{
+		this.voos.embarcarPassageiro(numeroVoo, passageiro);
 	}
 	
 	//!!!!Metodo nao finalizado!!!!
