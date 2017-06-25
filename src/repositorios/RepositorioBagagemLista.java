@@ -15,6 +15,7 @@ public class RepositorioBagagemLista implements RepositorioBagagem {
 		this.proximo = null;
 	}
 
+	//checa se a bagagem existe na lista
 	public boolean existe(int cod) {
 		boolean existe = false;
 		if (this.bagagem != null) {
@@ -29,7 +30,8 @@ public class RepositorioBagagemLista implements RepositorioBagagem {
 		}
 		return existe;
 	}
-
+	
+	//insere bagagem na lista
 	public void inserir(Bagagem bagagem) throws BagagemJaExistenteException, BagagemPesoException {
 		if (existe(bagagem.getCod())) {
 			throw new BagagemJaExistenteException();
@@ -44,7 +46,7 @@ public class RepositorioBagagemLista implements RepositorioBagagem {
 			}
 		}
 	}
-
+	//procura a bagagem 
 	public Bagagem procurar(int cod) throws BagagemNaoExisteException {
 		Bagagem b = null;
 		if (existe(cod)) {
@@ -60,7 +62,7 @@ public class RepositorioBagagemLista implements RepositorioBagagem {
 
 		return b;
 	}
-
+	//atualiza bagagem substituindo por um novo objeto
 	public void atualizar(int cod, Bagagem bagagem) throws BagagemNaoExisteException {
 		boolean existe = existe(cod);
 		if (existe) {
@@ -71,7 +73,7 @@ public class RepositorioBagagemLista implements RepositorioBagagem {
 			throw new BagagemNaoExisteException();
 		}
 	}
-
+	//remove bagagem através do código
 	public void remover(int cod) throws BagagemNaoExisteException {
 		boolean existe = existe(cod);
 		if (existe) {
@@ -85,7 +87,7 @@ public class RepositorioBagagemLista implements RepositorioBagagem {
 			throw new BagagemNaoExisteException();
 		}
 	}
-
+	//remove todas as bagagens alocadas em um voo 
 	public void remover(Voo voo) throws BagagemNaoExisteException {
 		while (this.bagagem != null) {
 			if (this.bagagem.getVoo().getNum() == voo.getNum()) {
