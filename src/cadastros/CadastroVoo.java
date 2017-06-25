@@ -14,7 +14,7 @@ public class CadastroVoo {
 	}
 	
 	public void cadastrarVoo(Voo voo) throws VooJaCadastradoException, NumVooInvalidoException{
-		// Para um voo ser válido, o mesmo precisa ter 4 números
+		 // Para um voo ser valido, o mesmo precisa ter 4 digitos
 		if((voo.getNum().length() != 4)){
 			throw new NumVooInvalidoException();
 		}else{
@@ -31,7 +31,8 @@ public class CadastroVoo {
 	}
 	
 	public void atualizarVoo(String num, Voo voo) throws VooNaoCadastradoException, NumVooInvalidoException{
-		if((voo.getNum().length() != 4)){
+		// Para um voo ser valido, o mesmo precisa ter 4 digitos
+		if((voo.getNum().length() != 4)){ 
 			throw new NumVooInvalidoException();
 		}else{
 			voos.atualizar(num, voo);
@@ -39,24 +40,29 @@ public class CadastroVoo {
 	}
 	
 	public Voo procurarVoo(String num) throws VooNaoCadastradoException, NumVooInvalidoException{
-		if((num.length() != 4)){
+		// Para um voo ser valido, o mesmo precisa ter 4 digitos
+		if((num.length() != 4)){ 
 			throw new NumVooInvalidoException();
 		}else{
 			return voos.procurar(num);
 		}
 	}
 	
-	public void embarcarPassageiro(String num, Passageiro passageiro) throws VooNaoCadastradoException, NumVooInvalidoException, capacidadePassageirosInvalidoException{
-		Passageiro arrayPassageiros[] = this.voos.procurar(num).getArrayPassageiros();
-		if((num.length() != 4)){
+	public void embarcarPassageiro(String num, Passageiro passageiro) throws VooNaoCadastradoException, NumVooInvalidoException, CapacidadePassageirosInvalidoException{
+		// Obter o array de passageiros do voo atual
+		Passageiro arrayPassageiros[] = this.voos.procurar(num).getArrayPassageiros(); 
+		// Para um voo ser valido, o mesmo precisa ter 4 digitos
+		if((num.length() != 4)){ 
 			throw new NumVooInvalidoException();
 		}
 		else if (this.indice < this.voos.procurar(num).getAviao().getCapacidade()){
-			arrayPassageiros[this.indice] = passageiro;
+			// Caso o avião ainda tenha assentos disponíveis, adicionar um passageiro ao array
+			arrayPassageiros[this.indice] = passageiro; 
 			this.indice++;
-			this.voos.procurar(num).setArrayPassageiros(arrayPassageiros);
+			// Gravar o novo array atualizado de passageiros
+			this.voos.procurar(num).setArrayPassageiros(arrayPassageiros); 
 		}else{
-			throw new capacidadePassageirosInvalidoException();
+			throw new CapacidadePassageirosInvalidoException();
 		}
 	}
 }
