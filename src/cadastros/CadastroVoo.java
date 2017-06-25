@@ -38,11 +38,11 @@ public class CadastroVoo {
 		}
 	}
 	
-	public void procurarVoo(String num) throws VooNaoCadastradoException, NumVooInvalidoException{
+	public Voo procurarVoo(String num) throws VooNaoCadastradoException, NumVooInvalidoException{
 		if((num.length() != 4)){
 			throw new NumVooInvalidoException();
 		}else{
-			voos.procurar(num);
+			return voos.procurar(num);
 		}
 	}
 	

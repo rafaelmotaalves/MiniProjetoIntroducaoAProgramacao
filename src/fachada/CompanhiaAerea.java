@@ -88,12 +88,12 @@ public class CompanhiaAerea {
 	}
 	
 	//!!!!Metodo nao finalizado!!!!
-	public void executarVoo(Voo voo) throws AeroportoNotFoundException, AeroportoLotadoException, cpfNaoCadastradoException, pilotoInvalidoException, IdNaoCadastradaException, capacidadePassageirosInvalidoException, VooNaoCadastradoException, NumVooInvalidoException{
+	public void executarVoo(String numero) throws AeroportoNotFoundException, AeroportoLotadoException, cpfNaoCadastradoException, pilotoInvalidoException, IdNaoCadastradaException, capacidadePassageirosInvalidoException, VooNaoCadastradoException, NumVooInvalidoException{
 		//this.aeroportos.decola(String codigoAeroportoBase);//necessario criar um aeroporto virtual para ser a base de operaçoes do programa
-		this.aeroportos.pousa(voo.getDestino().getCodigo());
-		this.pessoas.realocarPiloto(voo.getPiloto(), voo.getDestino());
-		Aviao aviaoAtualizado = new Aviao(voo.getAviao().getID(), voo.getAviao().getModelo(),voo.getAviao().getCapacidade(), voo.getDestino());
-		this.avioes.atualizarDadosAviao(voo.getAviao().getID(), aviaoAtualizado);
-		this.voos.removerVoo(voo.getNum());
+		this.aeroportos.pousa(voos.procurarVoo(numero).getDestino().getCodigo());
+		this.pessoas.realocarPiloto(voos.procurarVoo(numero).getPiloto(), voos.procurarVoo(numero).getDestino());
+		Aviao aviaoAtualizado = new Aviao(voos.procurarVoo(numero).getAviao().getID(), voos.procurarVoo(numero).getAviao().getModelo(),voos.procurarVoo(numero).getAviao().getCapacidade(), voos.procurarVoo(numero).getDestino());
+		this.avioes.atualizarDadosAviao(voos.procurarVoo(numero).getAviao().getID(), aviaoAtualizado);
+		this.voos.removerVoo(voos.procurarVoo(numero).getNum());
 	}
 }
