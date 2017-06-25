@@ -11,5 +11,5 @@ public class Passageiro extends Pessoa {
 	}
 	public void setMilhas(int milhas){
 		this.milhas=milhas;
-	}		
+	}
 }

@@ -63,4 +63,28 @@ public class CadastroPessoas {
 			throw new pilotoInvalidoException();
 		}
 }
+	public Pessoa BuscarPassageiro(String cpf) throws cpfNaoCadastradoException, passageiroInvalidoException{
+		Pessoa resposta = pessoas.procurar(cpf);
+		if(resposta instanceof Passageiro){
+			return resposta;
+		}else{
+			throw new passageiroInvalidoException();
+		}
+	}
+	public void renderMilhas(String cpf,int distancia) throws cpfNaoCadastradoException, passageiroInvalidoException{
+		Pessoa aux=pessoas.procurar(cpf);
+		if(aux instanceof Passageiro){
+			((Passageiro) aux).setMilhas(((Passageiro) aux).getMilhas()+distancia);
+		}else{
+			throw new passageiroInvalidoException();
+		}
+	}
+	public int getMilhas(String cpf) throws cpfNaoCadastradoException, passageiroInvalidoException{
+		Pessoa aux=pessoas.procurar(cpf);
+		if(aux instanceof Passageiro){
+			return ((Passageiro) aux).getMilhas();
+		}else{
+			throw new passageiroInvalidoException();
+		}
+	}
 }
