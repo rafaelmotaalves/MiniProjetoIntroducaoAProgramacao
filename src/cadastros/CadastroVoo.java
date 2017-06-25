@@ -51,7 +51,7 @@ public class CadastroVoo {
 		if((num.length() != 4)){
 			throw new NumVooInvalidoException();
 		}
-		else if (this.indice <= this.voos.procurar(num).getAviao().getCapacidade()){
+		else if (this.indice < this.voos.procurar(num).getAviao().getCapacidade()){
 			arrayPassageiros[this.indice] = passageiro;
 			this.indice++;
 			this.voos.procurar(num).setArrayPassageiros(arrayPassageiros);
