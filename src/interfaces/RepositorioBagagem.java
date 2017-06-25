@@ -1,4 +1,4 @@
-
+package interfaces;
 import classesBasicas.Bagagem;
 import classesBasicas.Voo;
 import exceptions.BagagemJaExistenteException;

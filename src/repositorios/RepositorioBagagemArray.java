@@ -1,10 +1,9 @@
-
+package repositorios;
 
 import classesBasicas.*;
 import exceptions.BagagemJaExistenteException;
 import exceptions.BagagemNaoExisteException;
 import exceptions.BagagemPesoException;
-import exceptions.naoHaBagagensException;
 import interfaces.RepositorioBagagem;
 
 public class RepositorioBagagemArray implements RepositorioBagagem {

@@ -1,4 +1,4 @@
-
+package exceptions;
 
 public class BagagemJaExistenteException extends Exception {
 	public BagagemJaExistenteException(){
