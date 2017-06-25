@@ -10,7 +10,7 @@ import cadastros.*;
 
 public class Programa {
 
-	public static void main(String[] args) throws FileNotFoundException {
+	public static void main(String[] args) {
 		try{
 			Scanner in = new Scanner(new FileReader("config.txt"))
 					.useDelimiter("\\||\\n");
@@ -72,7 +72,47 @@ public class Programa {
 					System.out.println(e.getMessage());
 			}
 			
-			aviao = new Aviao();
+			try {
+				aviao = new Aviao(1, "Boeing-747", 100, aeroportos.procurar("REC"));
+			} catch (AeroportoNotFoundException e) {
+				System.out.println(e.getMessage());
+			}
+			
+			funcionario = new Funcionario("001.002.003-12", "Clara Maria", 2000);
+			try {
+				pessoas.contratarFuncionario(funcionario);
+			} catch (cpfInvalidoException | salarioInvalidoException | cpfJaCadastradoException
+					| funcionarioInvalidoException e) {
+				System.out.println(e);
+			}
+			
+			piloto = new Piloto("001.002.004-12", "Gisele Pessoa", 4000);
+			try {
+				pessoas.contratarFuncionario(piloto);
+			} catch (cpfInvalidoException | salarioInvalidoException | cpfJaCadastradoException
+					| funcionarioInvalidoException e) {
+				System.out.println(e.getMessage());
+			}
+			try {
+				pessoas.realocarPiloto(piloto.getCpf(), aeroportos.procurar("REC"));
+			} catch (cpfNaoCadastradoException | pilotoInvalidoException | AeroportoNotFoundException e) {
+				System.out.println(e.getMessage());
+			}
+			
+			passageiro = new Passageiro("001.002.004-12", "Marcos Augusto");
+			try {
+				pessoas.cadastrarPassageiro(passageiro);
+			} catch (cpfJaCadastradoException | cpfInvalidoException | passageiroInvalidoException e) {
+				System.out.println(e.getMessage());
+			}
+			
+			
+			passageiro = new Passageiro("001.002.005-12", "Maria Augusta");
+			try {
+				pessoas.cadastrarPassageiro(passageiro);
+			} catch (cpfJaCadastradoException | cpfInvalidoException | passageiroInvalidoException e) {
+				System.out.println(e.getMessage());
+			}
 			
 		}catch(FileNotFoundException e){
 			System.out.println(e.getMessage());

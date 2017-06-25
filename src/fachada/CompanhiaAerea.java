@@ -87,7 +87,7 @@ public class CompanhiaAerea {
 		this.voos.removerVoo(numero);
 	}
 	
-	public void embarcarPassageiro(String numeroVoo, String cpfPassageiro) throws VooNaoCadastradoException, NumVooInvalidoException, CapacidadePassageirosInvalidoException{
+	public void embarcarPassageiro(String numeroVoo, String cpfPassageiro) throws VooNaoCadastradoException, NumVooInvalidoException, CapacidadePassageirosInvalidoException, cpfNaoCadastradoException, passageiroInvalidoException{
 		this.voos.embarcarPassageiro(numeroVoo, pessoas.BuscarPassageiro(cpfPassageiro));
 	}
 	
@@ -99,6 +99,7 @@ public class CompanhiaAerea {
 		this.pessoas.realocarPiloto(voos.procurarVoo(numero).getPiloto().getCpf(), voos.procurarVoo(numero).getDestino());
 		Aviao aviaoAtualizado = new Aviao(voos.procurarVoo(numero).getAviao().getID(), voos.procurarVoo(numero).getAviao().getModelo(),voos.procurarVoo(numero).getAviao().getCapacidade(), voos.procurarVoo(numero).getDestino());
 		this.avioes.atualizarDadosAviao(voos.procurarVoo(numero).getAviao().getID(), aviaoAtualizado);
+		this.bagagens.retirarBagagens(voos.procurarVoo(numero));
 		this.voos.removerVoo(voos.procurarVoo(numero).getNum());
 	}
 }

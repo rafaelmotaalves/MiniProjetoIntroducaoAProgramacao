@@ -60,4 +60,8 @@ public class CadastroAeroporto {
 			this.aeroportos.procurar(codigo).setQntDeAvioesAtual(qntAtual + 1);
 		}
 	}
+	
+	public Aeroporto procurar(String codigo) throws AeroportoNotFoundException{
+		return this.aeroportos.procurar(codigo);
+	}
 }
