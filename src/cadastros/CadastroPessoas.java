@@ -64,10 +64,10 @@ public class CadastroPessoas {
 			throw new pilotoInvalidoException();
 		}
 }
-	public Pessoa BuscarPassageiro(String cpf) throws cpfNaoCadastradoException, passageiroInvalidoException{
-		Pessoa resposta = pessoas.procurar(cpf);
-		if(resposta instanceof Passageiro){//testa se o dono do cpf fornecido é um passageiro
-			return resposta;
+	public Passageiro BuscarPassageiro(String cpf) throws cpfNaoCadastradoException, passageiroInvalidoException{
+		Pessoa aux=pessoas.procurar(cpf);
+		if(aux instanceof Passageiro){//testa se o dono do cpf fornecido é um passageiro
+			return (Passageiro) aux;
 		}else{
 			throw new passageiroInvalidoException();
 		}

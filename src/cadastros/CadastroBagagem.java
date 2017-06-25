@@ -1,6 +1,7 @@
-package cadastros;
+
 
 import classesBasicas.*;
+import repositorios.*;
 import exceptions.*;
 import interfaces.RepositorioBagagem;
 
@@ -12,33 +13,33 @@ public class CadastroBagagem {
 		this.bagagens = bagagem;
 	}
 
-	public void cadastrarBagagem(Bagagem bagagem) throws bagagemJaExistenteException, bagagemPesoException {
+	public void cadastrarBagagem(Bagagem bagagem) throws BagagemJaExistenteException, BagagemPesoException {
 		boolean cadastre = false;
 		try {
 			this.bagagens.procurar(bagagem.getCod());
-		} catch (bagagemNaoExisteException erro) {
+		} catch (BagagemNaoExisteException erro) {
 			cadastre = true;
 			bagagens.inserir(bagagem);
 		} 
 		finally {
 			if (!cadastre) {
-				throw new bagagemJaExistenteException();
+				throw new BagagemJaExistenteException();
 			}
 		}
 	}
 
-	public void estornarBagagem(int cod) throws bagagemNaoExisteException {
+	public void estornarBagagem(int cod) throws BagagemNaoExisteException {
 		boolean estorne = false;
 		try {
 
 			this.bagagens.remover(cod);
 
-		} catch (bagagemNaoExisteException erro) {
+		} catch (BagagemNaoExisteException erro) {
 			estorne = true;
 
 		} finally {
 			if (estorne) {
-				throw new bagagemNaoExisteException();
+				throw new BagagemNaoExisteException();
 			}
 		}
 
@@ -54,6 +55,11 @@ public class CadastroBagagem {
 		}
 		excesso *= taxa;
 		return excesso;
+	}
+	
+	public void retirarBagagens(Voo voo) throws naoHaBagagensException, BagagemNaoExisteException {
+		this.bagagens.remover(voo);
+		
 	}
 
 }
