@@ -51,14 +51,28 @@ public class Programa {
 			CadastroPessoas pessoas = new CadastroPessoas(repPessoas);
 			CadastroVoo voos = new CadastroVoo(repVoos);
 			
-			Aeroporto aeroporto = new Aeroporto("Recife","REC", 10, 0);
-				try {
-					aeroportos.cadastrar(aeroporto);
-				} catch (CapacidadeAeroportoInvalidaException | AeroportoJaCadastradoException e) {
-					System.out.println(e.getMessage());
-				}
+			Aeroporto aeroporto;
+			Aviao aviao;
+			Bagagem bagagem;
+			Passageiro passageiro;
+			Funcionario funcionario;
+			Piloto piloto;
 			
 			aeroporto = new Aeroporto("Recife","REC", 10, 0);
+			try {
+				aeroportos.cadastrar(aeroporto);
+			} catch (CapacidadeAeroportoInvalidaException | AeroportoJaCadastradoException e) {
+					System.out.println(e.getMessage());
+			}
+			
+			aeroporto = new Aeroporto("Los Angeles","LAX", 50, 10000);
+			try {
+				aeroportos.cadastrar(aeroporto);
+			} catch (CapacidadeAeroportoInvalidaException | AeroportoJaCadastradoException e) {
+					System.out.println(e.getMessage());
+			}
+			
+			aviao = new Aviao();
 			
 		}catch(FileNotFoundException e){
 			System.out.println(e.getMessage());
