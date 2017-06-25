@@ -32,15 +32,13 @@ public class RepositorioVooArray implements RepositorioVoo{
 		return this.indice == this.tamanho;
 	}
 	
-	public int getTamanho(){
-		return voos.length;
-	}
-	
 	public void criarNovoArray(){
+		// Criar um novo array com o dobro do tamanho do anterior caso o mesmo fique lotado
 		Voo [] aux = new Voo[tamanho * 2];
 		for (int i = 0; i < this.tamanho; i++){
 			aux[i] = this.voos[i];
 		}
+		// O novo array ficara no lugar do anterior
 		this.voos = aux;
 		this.tamanho = this.tamanho * 2;
 	}
