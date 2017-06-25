@@ -10,13 +10,14 @@ public class Voo {
 	private Passageiro[] arrayPassageiros;
 	
 	public Voo (String num, String horario, double preco, Piloto piloto, Aviao aviao, Aeroporto destino){
-		this.num = num;
-		this.horario = horario;
-		this.preco = preco;
-		this.piloto = piloto;
-		this.aviao = aviao;
-		this.destino = destino;
-		this.arrayPassageiros = new Passageiro[this.aviao.getCapacidade()];
+		this.setNum(num);
+		this.setHorario(horario);
+		this.setPreco(preco);
+		this.setPiloto(piloto);
+		this.setAviao(aviao);
+		this.setDestino(destino);
+		// O tamanho do array é definido pela capacidade do aviao atribuido ao voo
+		this.arrayPassageiros = new Passageiro[this.aviao.getCapacidade()]; 
 	}
 	public String getNum(){
 		return this.num;
