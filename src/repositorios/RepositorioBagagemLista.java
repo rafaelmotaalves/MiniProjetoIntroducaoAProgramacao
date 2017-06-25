@@ -1,9 +1,9 @@
-package repositorios; 
+
 
 import classesBasicas.*;
-import exceptions.bagagemJaExistenteException;
-import exceptions.bagagemNaoExisteException;
-import exceptions.bagagemPesoException;
+import exceptions.BagagemJaExistenteException;
+import exceptions.BagagemNaoExisteException;
+import exceptions.BagagemPesoException;
 import interfaces.RepositorioBagagem;
 
 public class RepositorioBagagemLista implements RepositorioBagagem {
@@ -30,12 +30,12 @@ public class RepositorioBagagemLista implements RepositorioBagagem {
 		return existe;
 	}
 
-	public void inserir(Bagagem bagagem) throws bagagemJaExistenteException, bagagemPesoException {
+	public void inserir(Bagagem bagagem) throws BagagemJaExistenteException, BagagemPesoException {
 		if (existe(bagagem.getCod())) {
-			throw new bagagemJaExistenteException();
-		} else if(bagagem.getPeso() <= 0){
-			throw new bagagemPesoException();
-			}else {
+			throw new BagagemJaExistenteException();
+		} else if (bagagem.getPeso() <= 0) {
+			throw new BagagemPesoException();
+		} else {
 			if (this.bagagem == null) {
 				this.bagagem = bagagem;
 				this.proximo = new RepositorioBagagemLista();
@@ -45,7 +45,7 @@ public class RepositorioBagagemLista implements RepositorioBagagem {
 		}
 	}
 
-	public Bagagem procurar(int cod) throws bagagemNaoExisteException {
+	public Bagagem procurar(int cod) throws BagagemNaoExisteException {
 		Bagagem b = null;
 		if (existe(cod)) {
 			if (this.bagagem.getCod() == cod) {
@@ -55,35 +55,47 @@ public class RepositorioBagagemLista implements RepositorioBagagem {
 			}
 
 		} else {
-			throw new bagagemNaoExisteException();
+			throw new BagagemNaoExisteException();
 		}
 
 		return b;
 	}
 
-	public void atualizar(int cod, Bagagem bagagem) throws bagagemNaoExisteException {
+	public void atualizar(int cod, Bagagem bagagem) throws BagagemNaoExisteException {
 		boolean existe = existe(cod);
-		if(existe){
-			if(this.bagagem.getCod() == cod){
+		if (existe) {
+			if (this.bagagem.getCod() == cod) {
 				this.bagagem = bagagem;
 			}
-		}else{
-			throw new bagagemNaoExisteException(); 
+		} else {
+			throw new BagagemNaoExisteException();
 		}
 	}
 
-	public void remover(int cod) throws bagagemNaoExisteException {
+	public void remover(int cod) throws BagagemNaoExisteException {
 		boolean existe = existe(cod);
-		if(existe){
-			if(this.bagagem.getCod() == cod){
+		if (existe) {
+			if (this.bagagem.getCod() == cod) {
 				this.bagagem = this.proximo.bagagem;
 				this.proximo = this.proximo.proximo;
-			}else{
+			} else {
 				this.proximo.remover(cod);
 			}
-		}else{
-			throw new bagagemNaoExisteException();
+		} else {
+			throw new BagagemNaoExisteException();
 		}
+	}
+
+	public void remover(Voo voo) throws BagagemNaoExisteException {
+		while (this.bagagem != null) {
+			if (this.bagagem.getVoo().getNum() == voo.getNum()) {
+				int cod = this.bagagem.getCod();
+				remover(cod);
+			}else{
+				remover(this.proximo.bagagem.getVoo());
+			}
+		}
+
 	}
 
 }

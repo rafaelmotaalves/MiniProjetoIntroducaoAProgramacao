@@ -1,9 +1,10 @@
-package repositorios;
+
 
 import classesBasicas.*;
-import exceptions.bagagemJaExistenteException;
-import exceptions.bagagemNaoExisteException;
-import exceptions.bagagemPesoException;
+import exceptions.BagagemJaExistenteException;
+import exceptions.BagagemNaoExisteException;
+import exceptions.BagagemPesoException;
+import exceptions.naoHaBagagensException;
 import interfaces.RepositorioBagagem;
 
 public class RepositorioBagagemArray implements RepositorioBagagem {
@@ -32,12 +33,12 @@ public class RepositorioBagagemArray implements RepositorioBagagem {
 
 	}
 
-	public void inserir(Bagagem bagagem) throws bagagemJaExistenteException, bagagemPesoException {
+	public void inserir(Bagagem bagagem) throws BagagemJaExistenteException, BagagemPesoException {
 		checaTamanho();
 		if (existe(bagagem.getCod())) {
-			throw new bagagemJaExistenteException();
+			throw new BagagemJaExistenteException();
 		} else if (bagagem.getPeso() < 0) {
-			throw new bagagemPesoException();
+			throw new BagagemPesoException();
 		} else {
 			this.bagagem[index] = bagagem;
 			index++;
@@ -45,7 +46,7 @@ public class RepositorioBagagemArray implements RepositorioBagagem {
 
 	}
 
-	public Bagagem procurar(int cod) throws bagagemNaoExisteException {
+	public Bagagem procurar(int cod) throws BagagemNaoExisteException {
 		Bagagem bagagem = null;
 		if (existe(cod)) {
 			boolean chave = true;
@@ -57,11 +58,11 @@ public class RepositorioBagagemArray implements RepositorioBagagem {
 			}
 			return bagagem;
 		} else {
-			throw new bagagemNaoExisteException();
+			throw new BagagemNaoExisteException();
 		}
 	}
 
-	public void atualizar(int cod, Bagagem bagagem) throws bagagemNaoExisteException {
+	public void atualizar(int cod, Bagagem bagagem) throws BagagemNaoExisteException {
 		boolean chave = existe(cod);
 		if (chave == true) {
 			boolean chave2 = true;
@@ -73,12 +74,12 @@ public class RepositorioBagagemArray implements RepositorioBagagem {
 			}
 
 		} else {
-			throw new bagagemNaoExisteException();
+			throw new BagagemNaoExisteException();
 		}
 
 	}
 
-	public void remover(int cod) throws bagagemNaoExisteException {
+	public void remover(int cod) throws BagagemNaoExisteException {
 		boolean chave = existe(cod);
 		if (chave == true) {
 			boolean chave2 = true;
@@ -91,7 +92,18 @@ public class RepositorioBagagemArray implements RepositorioBagagem {
 			}
 
 		} else {
-			throw new bagagemNaoExisteException();
+			throw new BagagemNaoExisteException();
+		}
+
+	}
+
+	public void remover(Voo voo) throws BagagemNaoExisteException {
+
+		for (int i = 0; i <= index; i++) {
+			if (this.bagagem[i].getVoo().getNum() == voo.getNum()) {
+				int cod = this.bagagem[i].getCod();
+				remover(cod);
+			}
 		}
 
 	}
