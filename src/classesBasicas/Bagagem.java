@@ -1,4 +1,4 @@
-
+package classesBasicas;
 
 public class Bagagem {
 	

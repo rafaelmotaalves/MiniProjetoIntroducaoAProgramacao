@@ -1,7 +1,6 @@
-
+package cadastros;
 
 import classesBasicas.*;
-import repositorios.*;
 import exceptions.*;
 import interfaces.RepositorioBagagem;
 

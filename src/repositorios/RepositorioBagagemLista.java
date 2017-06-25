@@ -1,4 +1,4 @@
- 
+package repositorios; 
 
 import classesBasicas.*;
 import exceptions.bagagemJaExistenteException;
