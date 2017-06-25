@@ -7,11 +7,15 @@ public class CompanhiaAerea {
 	private CadastroAeroporto aeroportos;
 	private CadastroAviao avioes;
 	private CadastroPessoas pessoas;
+	private CadastroBagagem bagagens;
+	private CadastroVoo voos;
 	
-	public CompanhiaAerea(CadastroAeroporto aeroportos, CadastroAviao avioes, CadastroPessoas pessoas){
+	public CompanhiaAerea(CadastroAeroporto aeroportos, CadastroAviao avioes, CadastroPessoas pessoas, CadastroBagagem bagagens, CadastroVoo voos){
 		this.aeroportos = aeroportos;
 		this.avioes = avioes;
 		this.pessoas = pessoas;
+		this.bagagens = bagagens;
+		this.voos = voos;
 	}
 	
 	public void cadastrarAeroporto(Aeroporto aeroporto) throws CapacidadeAeroportoInvalidaException, AeroportoJaCadastradoException{
@@ -30,6 +34,14 @@ public class CompanhiaAerea {
 		this.pessoas.contratarFuncionario(funcionario);
 	}
 	
+	public void cadastrarBagagem(Bagagem bagagem) throws bagagemJaExistenteException, bagagemPesoException{
+		this.bagagens.cadastrarBagagem(bagagem);
+	}
+	
+	public void cadastrarVoo(Voo voo) throws VooJaCadastradoException, NumVooInvalidoException{
+		this.voos.cadastrarVoo(voo);
+	}
+	
 	public void atualizarAeroporto(String codigo, Aeroporto aeroporto) throws AeroportoNotFoundException, CapacidadeAeroportoInvalidaException{
 		this.aeroportos.atualizarCadastroAeroporto(codigo, aeroporto);
 	}
@@ -40,6 +52,15 @@ public class CompanhiaAerea {
 	
 	public void atualizarPassageiro(String cpf, Pessoa passageiro) throws cpfNaoCadastradoException, passageiroInvalidoException{
 		this.pessoas.atualizarDadosPassageiro(cpf, passageiro);
+	}
+	
+	public void atualizarBagagem(int codigo, Bagagem bagagem) throws bagagemNaoExisteException, bagagemJaExistenteException, bagagemPesoException{
+		this.bagagens.estornarBagagem(codigo);
+		this.bagagens.cadastrarBagagem(bagagem);
+	}
+	
+	public void atualizarVoo(String numero, Voo voo) throws VooNaoCadastradoException, NumVooInvalidoException{
+		this.voos.atualizarVoo(numero, voo);
 	}
 	
 	public void removerAeroporto(String codigo) throws AeroportoNotFoundException{
@@ -58,12 +79,21 @@ public class CompanhiaAerea {
 		this.pessoas.demitirFuncionario(cpf);
 	}
 	
+	public void estornarBagagem(int codigo) throws bagagemNaoExisteException{
+		this.bagagens.estornarBagagem(codigo);
+	}
+	
+	public void removerVoo(String numero) throws VooNaoCadastradoException, NumVooInvalidoException{
+		this.voos.removerVoo(numero);
+	}
+	
 	//!!!!Metodo nao finalizado!!!!
-	public void executarVoo(Voo voo) throws AeroportoNotFoundException, AeroportoLotadoException, cpfNaoCadastradoException, pilotoInvalidoException, IdNaoCadastradaException, capacidadePassageirosInvalidoException{
+	public void executarVoo(Voo voo) throws AeroportoNotFoundException, AeroportoLotadoException, cpfNaoCadastradoException, pilotoInvalidoException, IdNaoCadastradaException, capacidadePassageirosInvalidoException, VooNaoCadastradoException, NumVooInvalidoException{
 		//this.aeroportos.decola(String codigoAeroportoBase);//necessario criar um aeroporto virtual para ser a base de operaçoes do programa
 		this.aeroportos.pousa(voo.getDestino().getCodigo());
 		this.pessoas.realocarPiloto(voo.getPiloto(), voo.getDestino());
 		Aviao aviaoAtualizado = new Aviao(voo.getAviao().getID(), voo.getAviao().getModelo(),voo.getAviao().getCapacidade(), voo.getDestino());
 		this.avioes.atualizarDadosAviao(voo.getAviao().getID(), aviaoAtualizado);
+		this.voos.removerVoo(voo.getNum());
 	}
 }
