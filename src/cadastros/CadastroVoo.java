@@ -1,18 +1,20 @@
 package cadastros;
-import classesBasicas.Voo;
+import classesBasicas.*;
 import exceptions.*;
 import interfaces.RepositorioVoo;
 
 public class CadastroVoo {
 
 	private RepositorioVoo voos;
+	private int indice;
 	
 	public CadastroVoo(RepositorioVoo voos){
 		this.voos = voos;
+		this.indice = 0;
 	}
 	
 	public void cadastrarVoo(Voo voo) throws VooJaCadastradoException, NumVooInvalidoException{
-		// Para um voo ser válido, o mesmo precisa ter 4 números
+		// Para um voo ser vÃ¡lido, o mesmo precisa ter 4 nÃºmeros
 		if((voo.getNum().length() != 4)){
 			throw new NumVooInvalidoException();
 		}else{
@@ -33,6 +35,28 @@ public class CadastroVoo {
 			throw new NumVooInvalidoException();
 		}else{
 			voos.atualizar(num, voo);
+		}
+	}
+	
+	public void procurarVoo(String num) throws VooNaoCadastradoException, NumVooInvalidoException{
+		if((num.length() != 4)){
+			throw new NumVooInvalidoException();
+		}else{
+			voos.procurar(num);
+		}
+	}
+	
+	public void embarcarPassageiro(String num, Passageiro passageiro) throws VooNaoCadastradoException, NumVooInvalidoException, capacidadePassageirosInvalidoException{
+		Passageiro arrayPassageiros[] = this.voos.procurar(num).getArrayPassageiros();
+		if((num.length() != 4)){
+			throw new NumVooInvalidoException();
+		}
+		else if (this.indice <= this.voos.procurar(num).getAviao().getCapacidade()){
+			arrayPassageiros[this.indice] = passageiro;
+			this.indice++;
+			this.voos.procurar(num).setArrayPassageiros(arrayPassageiros);
+		}else{
+			throw new capacidadePassageirosInvalidoException();
 		}
 	}
 }
