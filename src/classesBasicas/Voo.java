@@ -7,6 +7,7 @@ public class Voo {
 	private double preco;
 	private Piloto piloto;
 	private Aviao aviao;
+	private Passageiro[] arrayPassageiros;
 	
 	public Voo (String num, String horario, double preco, Piloto piloto, Aviao aviao, Aeroporto destino){
 		this.num = num;
@@ -15,6 +16,7 @@ public class Voo {
 		this.piloto = piloto;
 		this.aviao = aviao;
 		this.destino = destino;
+		this.arrayPassageiros = new Passageiro[this.aviao.getCapacidade()];
 	}
 	public String getNum(){
 		return this.num;
@@ -51,5 +53,11 @@ public class Voo {
 	}
 	public void setDestino (Aeroporto destino){
 		this.destino = destino;
+	}
+	public Passageiro[] getArrayPassageiros(){
+		return this.arrayPassageiros;
+	}
+	public void setArrayPassageiros(Passageiro[] arrayPassageiros){
+		this.arrayPassageiros = arrayPassageiros;
 	}
 }
