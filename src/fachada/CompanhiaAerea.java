@@ -87,6 +87,10 @@ public class CompanhiaAerea {
 		this.voos.removerVoo(numero);
 	}
 	
+	public void embarcarPassageiro(String numeroVoo, Passageiro passageiro){
+		this.voos.
+	}
+	
 	//!!!!Metodo nao finalizado!!!!
 	public void executarVoo(String numero) throws AeroportoNotFoundException, AeroportoLotadoException, cpfNaoCadastradoException, pilotoInvalidoException, IdNaoCadastradaException, capacidadePassageirosInvalidoException, VooNaoCadastradoException, NumVooInvalidoException{
 		//this.aeroportos.decola(String codigoAeroportoBase);//necessario criar um aeroporto virtual para ser a base de operaçoes do programa
