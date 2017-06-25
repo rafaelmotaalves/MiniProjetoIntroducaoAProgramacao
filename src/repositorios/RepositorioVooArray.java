@@ -1,8 +1,9 @@
 package repositorios;
 import classesBasicas.Voo;
 import exceptions.*;
+import interfaces.*;
 
-public class RepositorioVooArray {
+public class RepositorioVooArray implements RepositorioVoo{
 
 	private Voo[] voos;
 	private int indice;
