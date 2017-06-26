@@ -16,6 +16,7 @@ public class RepositorioVooArray implements RepositorioVoo{
 		this.indice = 0;
 	}
 	
+	//checa se existe tal voo no repositorio
 	public boolean achou(String num){
 		if (arrayLotado()){
 			criarNovoArray();
@@ -29,6 +30,7 @@ public class RepositorioVooArray implements RepositorioVoo{
 		return achou;
 	}
 	
+	//retorna se o array está lotado ou nao
 	public boolean arrayLotado(){
 		return this.indice == this.tamanho;
 	}
@@ -43,7 +45,7 @@ public class RepositorioVooArray implements RepositorioVoo{
 		this.voos = aux;
 		this.tamanho = this.tamanho * 2;
 	}
-	
+	//insere voo no repositorio
 	public void inserir (Voo voo) throws VooJaCadastradoException{
 		if (achou(voo.getNum())){
 			throw new VooJaCadastradoException();
@@ -52,7 +54,7 @@ public class RepositorioVooArray implements RepositorioVoo{
 			indice++;
 		}
 	}
-	
+	//procura voo no repositorio
 	public Voo procurar (String num) throws VooNaoCadastradoException{
 		boolean achou = false;
 		Voo voo = null;
@@ -68,7 +70,7 @@ public class RepositorioVooArray implements RepositorioVoo{
 		}
 		return voo;
 	}
-	
+	//atualiza voo substituindo por um novo objeto
 	public void atualizar (String num, Voo voo) throws VooNaoCadastradoException{
 		if (achou(num)){
 			boolean ok = false;
@@ -82,7 +84,7 @@ public class RepositorioVooArray implements RepositorioVoo{
 			throw new VooNaoCadastradoException();
 		}
 	}
-	
+	//remove voo do repositorio 
 	public void remover (String num) throws VooNaoCadastradoException{
 		boolean ok = false;
 		if (achou(num)){
