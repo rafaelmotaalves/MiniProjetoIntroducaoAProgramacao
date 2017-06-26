@@ -1,8 +1,10 @@
 package cadastros;
 
-import classesBasicas.*;
-import repositorios.*;
-import exceptions.*;
+import classesBasicas.Voo;
+import classesBasicas.Bagagem;
+import exceptions.BagagemJaExistenteException;
+import exceptions.BagagemPesoException;
+import exceptions.BagagemNaoExisteException;
 import interfaces.RepositorioBagagem;
 
 public class CadastroBagagem {
