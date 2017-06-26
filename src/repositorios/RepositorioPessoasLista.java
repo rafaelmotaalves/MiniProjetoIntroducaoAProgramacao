@@ -23,33 +23,31 @@ public class RepositorioPessoasLista implements RepositorioPessoas {
 		}
 		return existe;
 	}
-	public void inserir(Pessoa pessoa) throws cpfJaCadastradoException {
-		if(existe(pessoa.getCpf())){
+	public void inserir(Pessoa entrada) throws cpfJaCadastradoException {
+		if(existe(entrada.getCpf())){
 			throw new cpfJaCadastradoException();
-		}else{
+		}
+		else{
 			if(this.pessoa==null){
-				this.pessoa=pessoa;
+				this.pessoa=entrada;
 				this.proximo=new RepositorioPessoasLista();
-			}else{
-				this.proximo.inserir(pessoa);
+			}
+			else{
+				this.proximo.inserir(entrada);
 			}
 		}
 	}
 
 	public Pessoa procurar(String cpf) throws cpfNaoCadastradoException {
-		Pessoa resultado=null;
-		if(!existe(cpf)){
-			throw new cpfNaoCadastradoException();
-		}else{
-			if(this.pessoa!=null ){
-				if(this.pessoa.getCpf().equals(cpf)){
-					resultado=pessoa;
-				}else{
-					this.proximo.procurar(cpf);
-				}
+		if(this.pessoa!=null){
+			if(this.pessoa.getCpf().equals(cpf)){
+				return this.pessoa;
+			}else{
+				return this.proximo.procurar(cpf);
 			}
+		}else{
+			throw new cpfNaoCadastradoException();
 		}
-		return resultado;
 	}
 
 	public void atualizar(String cpf, Pessoa pessoa) throws cpfNaoCadastradoException {

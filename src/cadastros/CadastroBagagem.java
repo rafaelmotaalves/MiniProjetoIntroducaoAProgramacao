@@ -57,7 +57,7 @@ public class CadastroBagagem {
 		return excesso;
 	}
 	
-	public void retirarBagagens(Voo voo) throws naoHaBagagensException, BagagemNaoExisteException {
+	public void retirarBagagens(Voo voo) throws BagagemNaoExisteException {
 		this.bagagens.remover(voo);
 		
 	}

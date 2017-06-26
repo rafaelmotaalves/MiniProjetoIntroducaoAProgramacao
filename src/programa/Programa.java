@@ -85,16 +85,15 @@ public class Programa {
 					| funcionarioInvalidoException e) {
 				System.out.println(e);
 			}
-			
 			piloto = new Piloto("001.002.004-12", "Gisele Pessoa", 4000);
 			try {
 				pessoas.contratarFuncionario(piloto);
 			} catch (cpfInvalidoException | salarioInvalidoException | cpfJaCadastradoException
 					| funcionarioInvalidoException e) {
 				System.out.println(e.getMessage());
-			}
+			} 
 			try {
-				pessoas.realocarPiloto(piloto.getCpf(), aeroportos.procurar("REC"));
+				pessoas.realocarPiloto("001.002.004-12", aeroportos.procurar("REC"));
 			} catch (cpfNaoCadastradoException | pilotoInvalidoException | AeroportoNotFoundException e) {
 				System.out.println(e.getMessage());
 			}
