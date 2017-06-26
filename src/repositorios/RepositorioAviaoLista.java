@@ -1,6 +1,7 @@
 package repositorios;
 import classesBasicas.Aviao;
-import exceptions.*;
+import exceptions.AviaoJaCadastradoException;
+import exceptions.IdNaoCadastradaException;
 import interfaces.RepositorioAviao;
 public class RepositorioAviaoLista implements RepositorioAviao {
 	private Aviao aviao;
@@ -9,14 +10,14 @@ public class RepositorioAviaoLista implements RepositorioAviao {
 		this.aviao=null;
 		this.proximo=null;
 	}
-	public boolean existe(int ID){ //checa se o avião existe
+	public boolean existe(int id){ //checa se o avião existe
 		boolean existe=false;
 		if(this.aviao!=null){
-			if(this.aviao.getID()==ID){
+			if(this.aviao.getID()==id){
 				existe=true;
 			}
 			else{
-				this.proximo.existe(ID);
+				this.proximo.existe(id);
 			}
 		}
 		return existe;
@@ -35,52 +36,52 @@ public class RepositorioAviaoLista implements RepositorioAviao {
 			}
 		}
 	}
-	public Aviao procurar(int ID)  throws IdNaoCadastradaException{ //procura aviões na lista
+	public Aviao procurar(int id)  throws IdNaoCadastradaException{ //procura aviões na lista
 		Aviao procurado=null;
 		boolean encontrado=false;
-		if(!existe(ID)){
-			throw new IdNaoCadastradaException(ID);
+		if(!existe(id)){
+			throw new IdNaoCadastradaException(id);
 		}
 		else{
 			if(!encontrado && this.aviao!=null)
-				if(this.aviao.getID()==ID){
+				if(this.aviao.getID()==id){
 					procurado=this.aviao;
 					encontrado=true;
 				}
 				else{
-					this.proximo.procurar(ID);
+					this.proximo.procurar(id);
 				}
 		}
 		return procurado;
 	}
-	public void atualizar(int ID, Aviao aviao) throws IdNaoCadastradaException{ //atualiza informações do avião
+	public void atualizar(int id, Aviao aviao) throws IdNaoCadastradaException{ //atualiza informações do avião
 		boolean atualizado=false;
-		if(!existe(ID)){
-			throw new IdNaoCadastradaException(ID);
+		if(!existe(id)){
+			throw new IdNaoCadastradaException(id);
 		}
 		else{
 			if(this.aviao!=null && !atualizado){
-				if(this.aviao.getID()==ID){
+				if(this.aviao.getID()==id){
 					this.aviao=aviao;
 				}
 				else{
-					this.proximo.atualizar(ID, aviao);
+					this.proximo.atualizar(id, aviao);
 				}
 			}
 		}
 	}
-	public void remover(int ID) throws IdNaoCadastradaException{ //remove um avião da lista
-		if(!existe(ID)){
-			throw new IdNaoCadastradaException(ID);
+	public void remover(int id) throws IdNaoCadastradaException{ //remove um avião da lista
+		if(!existe(id)){
+			throw new IdNaoCadastradaException(id);
 		}
 		else{
 			if(this.aviao!=null){
-				if(this.aviao.getID()==ID){
+				if(this.aviao.getID()==id){
 					this.aviao=this.proximo.aviao;
 					this.proximo=this.proximo.proximo;
 				}
 				else{
-					this.proximo.remover(ID);
+					this.proximo.remover(id);
 				}
 			}
 		}
