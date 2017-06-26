@@ -12,6 +12,8 @@ public class RepositorioPessoasLista implements RepositorioPessoas {
 		this.pessoa=null;
 		this.proximo=null;
 	}
+	
+	//checa se cpf consta no repositorio
 	public boolean existe(String cpf){
 		boolean existe=false;
 		if(this.pessoa!=null){
@@ -23,6 +25,8 @@ public class RepositorioPessoasLista implements RepositorioPessoas {
 		}
 		return existe;
 	}
+	
+	//insere pessoa no repositorio
 	public void inserir(Pessoa entrada) throws cpfJaCadastradoException {
 		if(existe(entrada.getCpf())){
 			throw new cpfJaCadastradoException();
@@ -37,7 +41,8 @@ public class RepositorioPessoasLista implements RepositorioPessoas {
 			}
 		}
 	}
-
+	
+	//procura pessoa no repositório 
 	public Pessoa procurar(String cpf) throws CpfNaoCadastradoException {
 		Pessoa pessoa=null;
 		if(this.pessoa!=null){
@@ -54,6 +59,7 @@ public class RepositorioPessoasLista implements RepositorioPessoas {
 		}
 	}
 
+	//atualiza pessoa no repositorio, substituindo por um novo objeto pessoa
 	public void atualizar(String cpf, Pessoa pessoa) throws CpfNaoCadastradoException {
 		if(this.pessoa!=null){
 			if(this.pessoa.getCpf().equals(cpf)){
@@ -65,7 +71,8 @@ public class RepositorioPessoasLista implements RepositorioPessoas {
 			throw new CpfNaoCadastradoException();
 		}
 	}
-
+	
+	//remove pessoa do repositorio
 	public void remover(String cpf) throws cpfNaoCadastradoException {
 		if(!existe(cpf)){
 			throw new cpfNaoCadastradoException();
