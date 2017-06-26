@@ -1,6 +1,8 @@
 package interfaces;
 import classesBasicas.Voo;
-import exceptions.*;
+import exceptions.VooJaCadastradoException;
+import exceptions.VooNaoCadastradoException;
+
 
 public interface RepositorioVoo {
 
