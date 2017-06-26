@@ -11,8 +11,7 @@ public class RepositorioBagagemArray implements RepositorioBagagem {
 	private int index;
 	private int tamanho;
 
-	public RepositorioBagagemArray() {
-		this.tamanho = 5;
+	public RepositorioBagagemArray(int tamanho) {
 		this.bagagem = new Bagagem[tamanho];
 		this.index = 0;
 	}
