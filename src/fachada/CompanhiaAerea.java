@@ -87,6 +87,18 @@ public class CompanhiaAerea {
 		this.voos.removerVoo(numero);
 	}
 	
+	public Aeroporto procurarAeroporto(String codigo) throws AeroportoNotFoundException{
+		return this.aeroportos.procurar(codigo);
+	}
+	
+	public Aviao procurarAviao(int ID) throws IdNaoCadastradaException{
+		return this.avioes.procurarAviao(ID);
+	}
+	
+	public void realocarPiloto(String cpf, Aeroporto local) throws cpfNaoCadastradoException, pilotoInvalidoException{
+		this.pessoas.realocarPiloto(cpf, local);
+	}
+	
 	public void embarcarPassageiro(String numeroVoo, String cpfPassageiro) throws VooNaoCadastradoException, NumVooInvalidoException, CapacidadePassageirosInvalidoException, cpfNaoCadastradoException, passageiroInvalidoException{
 		this.voos.embarcarPassageiro(numeroVoo, pessoas.BuscarPassageiro(cpfPassageiro));
 	}

@@ -7,6 +7,7 @@ import interfaces.*;
 import exceptions.*;
 import repositorios.*;
 import cadastros.*;
+import fachada.*;
 
 public class Programa {
 
@@ -23,7 +24,6 @@ public class Programa {
 			RepositorioVoo repVoos;
 			
 			
-			//in.close();
 			if (nome.toLowerCase().equals("array")){
 				repAeroportos = new RepositorioAeroportoArray(5);
 				repAvioes = new RepositorioAviaoArray(5);
@@ -51,6 +51,8 @@ public class Programa {
 			CadastroPessoas pessoas = new CadastroPessoas(repPessoas);
 			CadastroVoo voos = new CadastroVoo(repVoos);
 			
+			CompanhiaAerea companhiaAerea = new CompanhiaAerea(aeroportos, avioes, pessoas, bagagens, voos);
+			
 			Aeroporto aeroporto;
 			Aviao aviao;
 			Bagagem bagagem;
@@ -61,27 +63,27 @@ public class Programa {
 			
 			aeroporto = new Aeroporto("Recife","REC", 10, 0);
 			try {
-				aeroportos.cadastrar(aeroporto);
+				companhiaAerea.cadastrarAeroporto(aeroporto);
 			} catch (CapacidadeAeroportoInvalidaException | AeroportoJaCadastradoException e) {
 					System.out.println(e.getMessage());
 			}
 			
 			aeroporto = new Aeroporto("Los Angeles","LAX", 50, 10000);
 			try {
-				aeroportos.cadastrar(aeroporto);
+				companhiaAerea.cadastrarAeroporto(aeroporto);
 			} catch (CapacidadeAeroportoInvalidaException | AeroportoJaCadastradoException e) {
 					System.out.println(e.getMessage());
 			}
 			
 			try {
-				aviao = new Aviao(1, "Boeing-747", 100, aeroportos.procurar("REC"));
+				aviao = new Aviao(1, "Boeing-747", 100, companhiaAerea.procurarAeroporto("REC"));
 			} catch (AeroportoNotFoundException e) {
 				System.out.println(e.getMessage());
 			}
 			
 			funcionario = new Funcionario("001.002.003-12", "Clara Maria", 2000);
 			try {
-				pessoas.contratarFuncionario(funcionario);
+				companhiaAerea.cadastrarFuncionario(funcionario);
 			} catch (cpfInvalidoException | salarioInvalidoException | cpfJaCadastradoException
 					| funcionarioInvalidoException e) {
 				System.out.println(e);
@@ -89,20 +91,20 @@ public class Programa {
 			
 			piloto = new Piloto("001.002.004-12", "Gisele Pessoa", 4000);
 			try {
-				pessoas.contratarFuncionario(piloto);
+				companhiaAerea.cadastrarFuncionario(piloto);
 			} catch (cpfInvalidoException | salarioInvalidoException | cpfJaCadastradoException
 					| funcionarioInvalidoException e) {
 				System.out.println(e.getMessage());
 			}
 			try {
-				pessoas.realocarPiloto(piloto.getCpf(), aeroportos.procurar("REC"));
+				companhiaAerea.realocarPiloto(piloto.getCpf(), companhiaAerea.procurarAeroporto("REC"));
 			} catch (cpfNaoCadastradoException | pilotoInvalidoException | AeroportoNotFoundException e) {
 				System.out.println(e.getMessage());
 			}
 			
 			passageiro = new Passageiro("001.002.004-12", "Marcos Augusto");
 			try {
-				pessoas.cadastrarPassageiro(passageiro);
+				companhiaAerea.cadastrarPassageiro(passageiro);
 			} catch (cpfJaCadastradoException | cpfInvalidoException | passageiroInvalidoException e) {
 				System.out.println(e.getMessage());
 			}
@@ -110,16 +112,23 @@ public class Programa {
 			
 			passageiro = new Passageiro("001.002.005-12", "Marcos Augusto");
 			try {
-				pessoas.cadastrarPassageiro(passageiro);
+				companhiaAerea.cadastrarPassageiro(passageiro);
 			} catch (cpfJaCadastradoException | cpfInvalidoException | passageiroInvalidoException e) {
 				System.out.println(e.getMessage());
 			}
 			
 			try {
-				voo = new Voo("REC-LAX", "14:00", 2000, piloto, avioes.procurarAviao(1), aeroportos.procurar("LAX"));
+				voo = new Voo("REC-LAX", "14:00", 2000, piloto, companhiaAerea.procurarAviao(1), companhiaAerea.procurarAeroporto("LAX"));
+				try {
+					companhiaAerea.cadastrarVoo(voo);
+				} catch (VooJaCadastradoException | NumVooInvalidoException e) {
+					System.out.println(e.getMessage());
+				}
 			} catch (AeroportoNotFoundException | IdNaoCadastradaException e) {
 				System.out.println(e.getMessage());
 			}
+			
+			
 			
 		}catch(FileNotFoundException e){
 			System.out.println(e.getMessage());
