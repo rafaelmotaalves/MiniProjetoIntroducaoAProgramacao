@@ -9,7 +9,7 @@ public class RepositorioAviaoLista implements RepositorioAviao {
 		this.aviao=null;
 		this.proximo=null;
 	}
-	public boolean existe(int ID){
+	public boolean existe(int ID){ //checa se o avião existe
 		boolean existe=false;
 		if(this.aviao!=null){
 			if(this.aviao.getID()==ID){
@@ -21,7 +21,7 @@ public class RepositorioAviaoLista implements RepositorioAviao {
 		}
 		return existe;
 	}
-	public void inserir(Aviao aviao) throws AviaoJaCadastradoException{
+	public void inserir(Aviao aviao) throws AviaoJaCadastradoException{ //insere novos aviões a lista
 		if(existe(aviao.getID())){
 			throw new AviaoJaCadastradoException();
 		}
@@ -35,10 +35,10 @@ public class RepositorioAviaoLista implements RepositorioAviao {
 			}
 		}
 	}
-	public Aviao procurar(int ID)  throws IdNaoCadastradaException{
+	public Aviao procurar(int ID)  throws IdNaoCadastradaException{ //procura aviões na lista
 		Aviao procurado=null;
 		boolean encontrado=false;
-		if(!existe(aviao.getID())){
+		if(!existe(ID)){
 			throw new IdNaoCadastradaException(ID);
 		}
 		else{
@@ -53,7 +53,7 @@ public class RepositorioAviaoLista implements RepositorioAviao {
 		}
 		return procurado;
 	}
-	public void atualizar(int ID, Aviao aviao) throws IdNaoCadastradaException{
+	public void atualizar(int ID, Aviao aviao) throws IdNaoCadastradaException{ //atualiza informações do avião
 		boolean atualizado=false;
 		if(!existe(ID)){
 			throw new IdNaoCadastradaException(ID);
@@ -69,7 +69,7 @@ public class RepositorioAviaoLista implements RepositorioAviao {
 			}
 		}
 	}
-	public void remover(int ID) throws IdNaoCadastradaException{
+	public void remover(int ID) throws IdNaoCadastradaException{ //remove um avião da lista
 		if(!existe(ID)){
 			throw new IdNaoCadastradaException(ID);
 		}
