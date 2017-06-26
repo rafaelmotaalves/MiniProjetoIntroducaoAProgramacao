@@ -13,7 +13,7 @@ public class CadastroVoo {
 		this.indice = 0;
 	}
 	
-	public void cadastrarVoo(Voo voo) throws VooJaCadastradoException, NumVooInvalidoException{
+	public void cadastrarVoo(Voo voo) throws VooJaCadastradoException, NumVooInvalidoException{ //Realiza o cadastro
 		 // Para um voo ser valido, o mesmo precisa ter 4 digitos
 		if((voo.getNum().length() != 4)){
 			throw new NumVooInvalidoException();
@@ -22,7 +22,7 @@ public class CadastroVoo {
 		}
 	}
 	
-	public void removerVoo(String num) throws VooNaoCadastradoException, NumVooInvalidoException{
+	public void removerVoo(String num) throws VooNaoCadastradoException, NumVooInvalidoException{ //Cancela um voo
 		if (voos.procurar(num) instanceof Voo){
 			voos.remover(num);
 		}else{
@@ -30,7 +30,7 @@ public class CadastroVoo {
 		}
 	}
 	
-	public void atualizarVoo(String num, Voo voo) throws VooNaoCadastradoException, NumVooInvalidoException{
+	public void atualizarVoo(String num, Voo voo) throws VooNaoCadastradoException, NumVooInvalidoException{ //Atualiza o voo
 		// Para um voo ser valido, o mesmo precisa ter 4 digitos
 		if((voo.getNum().length() != 4)){ 
 			throw new NumVooInvalidoException();
@@ -39,7 +39,7 @@ public class CadastroVoo {
 		}
 	}
 	
-	public Voo procurarVoo(String num) throws VooNaoCadastradoException, NumVooInvalidoException{
+	public Voo procurarVoo(String num) throws VooNaoCadastradoException, NumVooInvalidoException{ //Procura um voo
 		// Para um voo ser valido, o mesmo precisa ter 4 digitos
 		if((num.length() != 4)){ 
 			throw new NumVooInvalidoException();
@@ -48,7 +48,7 @@ public class CadastroVoo {
 		}
 	}
 	
-	public void embarcarPassageiro(String num, Passageiro passageiro) throws VooNaoCadastradoException, NumVooInvalidoException, CapacidadePassageirosInvalidoException{
+	public void embarcarPassageiro(String num, Passageiro passageiro) throws VooNaoCadastradoException, NumVooInvalidoException, CapacidadePassageirosInvalidoException{ //Adiciona os passageiros ao aviao
 		// Obter o array de passageiros do voo atual
 		Passageiro arrayPassageiros[] = this.voos.procurar(num).getArrayPassageiros(); 
 		// Para um voo ser valido, o mesmo precisa ter 4 digitos
