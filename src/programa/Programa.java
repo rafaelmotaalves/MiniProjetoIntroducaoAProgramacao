@@ -57,6 +57,7 @@ public class Programa {
 			Passageiro passageiro;
 			Funcionario funcionario;
 			Piloto piloto;
+			Voo voo; 
 			
 			aeroporto = new Aeroporto("Recife","REC", 10, 0);
 			try {
@@ -107,10 +108,16 @@ public class Programa {
 			}
 			
 			
-			passageiro = new Passageiro("001.002.005-12", "Maria Augusta");
+			passageiro = new Passageiro("001.002.005-12", "Marcos Augusto");
 			try {
 				pessoas.cadastrarPassageiro(passageiro);
 			} catch (cpfJaCadastradoException | cpfInvalidoException | passageiroInvalidoException e) {
+				System.out.println(e.getMessage());
+			}
+			
+			try {
+				voo = new Voo("REC-LAX", "14:00", 2000, piloto, avioes.procurarAviao(1), aeroportos.procurar("LAX"));
+			} catch (AeroportoNotFoundException | IdNaoCadastradaException e) {
 				System.out.println(e.getMessage());
 			}
 			

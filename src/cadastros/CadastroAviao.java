@@ -33,7 +33,9 @@ public class CadastroAviao {
 		}
 	}
 	
-
+	public Aviao procurarAviao(int ID) throws IdNaoCadastradaException{
+		return this.aviaos.procurar(ID);
+	}
 
 
 }
