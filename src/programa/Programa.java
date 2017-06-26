@@ -77,9 +77,15 @@ public class Programa {
 			
 			try {
 				aviao = new Aviao(1, "Boeing-747", 100, companhiaAerea.procurarAeroporto("REC"));
+				try {
+					companhiaAerea.realocarAviao("REC");
+				} catch (AeroportoNotFoundException | AeroportoLotadoException e) {
+					System.out.println(e);
+				}
 			} catch (AeroportoNotFoundException e) {
 				System.out.println(e.getMessage());
 			}
+			
 			
 			funcionario = new Funcionario("001.002.003-12", "Clara Maria", 2000);
 			try {

@@ -115,7 +115,6 @@ public class CompanhiaAerea {
 		this.voos.embarcarPassageiro(numeroVoo, pessoas.BuscarPassageiro(cpfPassageiro));
 	}
 	
-	//!!!!Metodo nao finalizado!!!!
 	public void executarVoo(String numero) throws AeroportoNotFoundException, AeroportoLotadoException, cpfNaoCadastradoException, pilotoInvalidoException, IdNaoCadastradaException, CapacidadePassageirosInvalidoException, VooNaoCadastradoException, NumVooInvalidoException, AvioesIndisponiveisNoAeroportoException, BagagemNaoExisteException{
 		String codigoAeroportoBase = "REC";
 		this.aeroportos.decola(codigoAeroportoBase);//Aeroporto base de operaçoes do programa
