@@ -38,29 +38,31 @@ public class RepositorioPessoasLista implements RepositorioPessoas {
 		}
 	}
 
-	public Pessoa procurar(String cpf) throws cpfNaoCadastradoException {
+	public Pessoa procurar(String cpf) throws CpfNaoCadastradoException {
+		Pessoa pessoa=null;
 		if(this.pessoa!=null){
 			if(this.pessoa.getCpf().equals(cpf)){
-				return this.pessoa;
+				pessoa =  this.pessoa;
 			}else{
-				return this.proximo.procurar(cpf);
+				pessoa =  this.proximo.procurar(cpf);
 			}
+		}
+		if(pessoa==null){
+			throw new CpfNaoCadastradoException();
 		}else{
-			throw new cpfNaoCadastradoException();
+			return pessoa;
 		}
 	}
 
-	public void atualizar(String cpf, Pessoa pessoa) throws cpfNaoCadastradoException {
-		if(!existe(cpf)){
-			throw new cpfNaoCadastradoException();
-		}else{
-			if(this.pessoa!=null){
-				if(this.pessoa.getCpf().equals(cpf)){
-					this.pessoa=pessoa;
-				}else{
-					this.proximo.atualizar(cpf,pessoa);
-				}
+	public void atualizar(String cpf, Pessoa pessoa) throws CpfNaoCadastradoException {
+		if(this.pessoa!=null){
+			if(this.pessoa.getCpf().equals(cpf)){
+				this.pessoa=pessoa;
+			}else{
+				this.proximo.procurar(cpf);
 			}
+		}else{
+			throw new CpfNaoCadastradoException();
 		}
 	}
 
