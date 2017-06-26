@@ -1,6 +1,10 @@
 package cadastros;
-import classesBasicas.*;
-import exceptions.*;
+import classesBasicas.Voo;
+import classesBasicas.Passageiro;
+import exceptions.VooJaCadastradoException;
+import exceptions.NumVooInvalidoException;
+import exceptions.VooNaoCadastradoException;
+import exceptions.CapacidadePassageirosInvalidoException;
 import interfaces.RepositorioVoo;
 
 public class CadastroVoo {
@@ -48,7 +52,8 @@ public class CadastroVoo {
 		}
 	}
 	
-	public void embarcarPassageiro(String num, Passageiro passageiro) throws VooNaoCadastradoException, NumVooInvalidoException, CapacidadePassageirosInvalidoException{ //Adiciona os passageiros ao aviao
+	//Adiciona os passageiros ao aviao
+	public void embarcarPassageiro(String num, Passageiro passageiro) throws VooNaoCadastradoException, NumVooInvalidoException, CapacidadePassageirosInvalidoException{ 
 		// Obter o array de passageiros do voo atual
 		Passageiro arrayPassageiros[] = this.voos.procurar(num).getArrayPassageiros(); 
 		// Para um voo ser valido, o mesmo precisa ter 4 digitos
