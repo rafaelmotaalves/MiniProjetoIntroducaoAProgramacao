@@ -1,10 +1,6 @@
 package cadastros;
 import classesBasicas.Aeroporto;
-import exceptions.CapacidadeAeroportoInvalidaException;
-import exceptions.AeroportoJaCadastradoException;
-import exceptions.AeroportoNotFoundException;
-import exceptions.AeroportoLotadoException;
-import exceptions.AvioesIndisponiveisNoAeroportoException;
+import exceptions.*;
 import interfaces.RepositorioAeroportos;
 
 public class CadastroAeroporto {
@@ -14,7 +10,7 @@ public class CadastroAeroporto {
 		this.aeroportos = repositorio;
 	}
 	
-	public void cadastrar(Aeroporto aeroporto) throws CapacidadeAeroportoInvalidaException, AeroportoJaCadastradoException{ //Realiza o cadastro
+	public void cadastrar(Aeroporto aeroporto) throws CapacidadeAeroportoInvalidaException, AeroportoJaCadastradoException{ 
 		boolean podecadastrar = false;
 		
 		try{
@@ -33,7 +29,7 @@ public class CadastroAeroporto {
 		}
 	}
 	
-	public void atualizarCadastroAeroporto(String codigo, Aeroporto aeroporto) throws AeroportoNotFoundException, CapacidadeAeroportoInvalidaException{ //Atualiza cadastro
+	public void atualizarCadastroAeroporto(String codigo, Aeroporto aeroporto) throws AeroportoNotFoundException, CapacidadeAeroportoInvalidaException{
 		if(aeroporto.getCapacidade() <= 0) {
 			throw new CapacidadeAeroportoInvalidaException();
 		} else {
@@ -41,11 +37,11 @@ public class CadastroAeroporto {
 		}
 	}
 	
-	public void removerCadastroAeroporto(String codigo) throws AeroportoNotFoundException{ //Remove um cadastro
+	public void removerCadastroAeroporto(String codigo) throws AeroportoNotFoundException{
 		this.aeroportos.remover(codigo);
 	}
 	
-	public void decola(String codigo) throws AeroportoNotFoundException, AvioesIndisponiveisNoAeroportoException{ //Retira um aviao do aeroporto
+	public void decola(String codigo) throws AeroportoNotFoundException, AvioesIndisponiveisNoAeroportoException{
 		int qntAtual = this.aeroportos.procurar(codigo).getQntDeAvioesAtual();
 		if(qntAtual == 0){
 			throw new AvioesIndisponiveisNoAeroportoException();
@@ -54,7 +50,7 @@ public class CadastroAeroporto {
 		}
 	}
 	
-	public void pousa(String codigo) throws AeroportoNotFoundException, AeroportoLotadoException{ //Adiciona um aviao ao aeroporto
+	public void pousa(String codigo) throws AeroportoNotFoundException, AeroportoLotadoException{
 		int qntAtual = this.aeroportos.procurar(codigo).getQntDeAvioesAtual();
 		int capacidade = this.aeroportos.procurar(codigo).getCapacidade();
 		
@@ -65,7 +61,7 @@ public class CadastroAeroporto {
 		}
 	}
 	
-	public Aeroporto procurar(String codigo) throws AeroportoNotFoundException{ //procura um aeroporto
+	public Aeroporto procurar(String codigo) throws AeroportoNotFoundException{
 		return this.aeroportos.procurar(codigo);
 	}
 }
