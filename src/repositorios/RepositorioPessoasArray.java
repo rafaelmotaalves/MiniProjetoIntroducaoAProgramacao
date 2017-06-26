@@ -14,10 +14,10 @@ public class RepositorioPessoasArray implements RepositorioPessoas {
 		this.pessoas=new Pessoa[tamanho];
 		this.indice=0;
 	}
-	public int getTamanho(){
+	public int getTamanho(){ //descobre o tamanho do repositorio
 		return pessoas.length;
 	}
-	public void duplicarTamanho(){
+	public void duplicarTamanho(){ //duplica o tamanho
 		Pessoa[] aux = new Pessoa[tamanho*2];
 		for(int i=0;i<this.tamanho;i++){
 			aux[i]=this.pessoas[i];
@@ -25,10 +25,10 @@ public class RepositorioPessoasArray implements RepositorioPessoas {
 		this.pessoas=aux;
 		this.tamanho=this.tamanho*2;
 	}
-	public boolean estaCheio(){
+	public boolean estaCheio(){ //verifica se esta cheio
 		return this.indice==this.tamanho;
 	}
-	public boolean existe(String cpf){
+	public boolean existe(String cpf){ //verifica se existe
 		if(estaCheio()){
 			duplicarTamanho();	
 		}
@@ -41,7 +41,7 @@ public class RepositorioPessoasArray implements RepositorioPessoas {
 		return existe;
 	}
 
-	public void inserir(Pessoa pessoa) throws cpfJaCadastradoException {
+	public void inserir(Pessoa pessoa) throws cpfJaCadastradoException { //insere uma pessoa
 		if(existe(pessoa.getCpf())){
 			throw new cpfJaCadastradoException();
 		}else{
@@ -50,7 +50,7 @@ public class RepositorioPessoasArray implements RepositorioPessoas {
 		}
 	}
 
-	public Pessoa procurar(String cpf) throws cpfNaoCadastradoException {
+	public Pessoa procurar(String cpf) throws cpfNaoCadastradoException { //procura uma pessoa
 		boolean achei=false;
 		Pessoa resultado=null;
 		if(!existe(cpf)){
@@ -66,7 +66,7 @@ public class RepositorioPessoasArray implements RepositorioPessoas {
 		}
 	}
 
-	public void atualizar(String cpf, Pessoa pessoa) throws cpfNaoCadastradoException {
+	public void atualizar(String cpf, Pessoa pessoa) throws cpfNaoCadastradoException { //atualiza a pessoa
 		boolean achei=false;
 		if(!existe(cpf)){
 			throw new cpfNaoCadastradoException();
@@ -80,7 +80,7 @@ public class RepositorioPessoasArray implements RepositorioPessoas {
 		}
 	}
 
-	public void remover(String cpf) throws cpfNaoCadastradoException {
+	public void remover(String cpf) throws cpfNaoCadastradoException { //remove uma pessoa
 		boolean achei=false;
 		if(!existe(cpf)){
 			throw new cpfNaoCadastradoException();
