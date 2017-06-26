@@ -1,12 +1,10 @@
 package interfaces;
 import classesBasicas.Pessoa;
-import exceptions.cpfJaCadastradoException;
-import exceptions.cpfNaoCadastradoException;
-
+import exceptions.*;
 
 public interface RepositorioPessoas {
-	void inserir(Pessoa pessoa) throws cpfJaCadastradoException;
-	Pessoa procurar(String cpf) throws cpfNaoCadastradoException;
-	void atualizar(String cpf,Pessoa pessoa) throws cpfNaoCadastradoException ;
-	void remover(String cpf) throws cpfNaoCadastradoException;
+	void inserir(Pessoa pessoa) throws CpfJaCadastradoException;
+	Pessoa procurar(String cpf) throws CpfNaoCadastradoException;
+	void atualizar(String cpf,Pessoa pessoa) throws CpfNaoCadastradoException ;
+	void remover(String cpf) throws CpfNaoCadastradoException;
 }
