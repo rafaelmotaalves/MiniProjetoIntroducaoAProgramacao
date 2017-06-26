@@ -17,7 +17,7 @@ public class RepositorioBagagemArray implements RepositorioBagagem {
 		this.index = 0;
 	}
 
-	//checa se array está completo, caso positivo, dobra o tamanho
+	//checa se array esta completo, caso positivo, dobra o tamanho
 	public void checaTamanho() {
 		if (this.index == tamanho - 1) {
 			tamanho *= 2;
@@ -47,7 +47,7 @@ public class RepositorioBagagemArray implements RepositorioBagagem {
 
 	}
 	
-	//procura uma bagagem através do código
+	//procura uma bagagem atraves do código
 	public Bagagem procurar(int cod) throws BagagemNaoExisteException {
 		Bagagem bagagem = null;
 		if (existe(cod)) {
@@ -82,7 +82,7 @@ public class RepositorioBagagemArray implements RepositorioBagagem {
 
 	}
 
-	//remove uma bagagem atráves do código
+	//remove uma bagagem atraves do código
 	public void remover(int cod) throws BagagemNaoExisteException {
 		boolean chave = existe(cod);
 		if (chave == true) {
@@ -103,7 +103,7 @@ public class RepositorioBagagemArray implements RepositorioBagagem {
 	//remove as bagagens relacionadas a um vôo
 	public void remover(Voo voo) throws BagagemNaoExisteException {
 
-		for (int i = 0; i <= index; i++) {
+		for (int i = 0; i <= index-1; i++) {
 			if (this.bagagem[i].getVoo().getNum() == voo.getNum()) {
 				int cod = this.bagagem[i].getCod();
 				this.remover(cod);
@@ -112,7 +112,7 @@ public class RepositorioBagagemArray implements RepositorioBagagem {
 
 	}
 
-	//retorna a existência ou nao da bagagem no array
+	//retorna a existencia ou nao da bagagem no array
 	public boolean existe(int cod) {
 		boolean existe = false;
 		for (int i = 0; i < tamanho && existe == false; i++) {
