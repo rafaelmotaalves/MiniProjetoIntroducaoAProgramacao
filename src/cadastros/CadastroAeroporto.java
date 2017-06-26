@@ -1,6 +1,10 @@
 package cadastros;
 import classesBasicas.Aeroporto;
-import exceptions.*;
+import exceptions.CapacidadeAeroportoInvalidaException;
+import exceptions.AeroportoJaCadastradoException;
+import exceptions.AeroportoNotFoundException;
+import exceptions.AeroportoLotadoException;
+import exceptions.AvioesIndisponiveisNoAeroportoException;
 import interfaces.RepositorioAeroportos;
 
 public class CadastroAeroporto {
