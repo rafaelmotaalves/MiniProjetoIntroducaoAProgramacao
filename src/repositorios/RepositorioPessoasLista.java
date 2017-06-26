@@ -1,8 +1,8 @@
 package repositorios;
 
 import classesBasicas.Pessoa;
-import exceptions.cpfJaCadastradoException;
-import exceptions.cpfNaoCadastradoException;
+import exceptions.CpfJaCadastradoException;
+import exceptions.CpfNaoCadastradoException;
 import interfaces.RepositorioPessoas;
 
 public class RepositorioPessoasLista implements RepositorioPessoas {
@@ -12,8 +12,6 @@ public class RepositorioPessoasLista implements RepositorioPessoas {
 		this.pessoa=null;
 		this.proximo=null;
 	}
-	
-	//checa se cpf consta no repositorio
 	public boolean existe(String cpf){
 		boolean existe=false;
 		if(this.pessoa!=null){
@@ -25,11 +23,9 @@ public class RepositorioPessoasLista implements RepositorioPessoas {
 		}
 		return existe;
 	}
-	
-	//insere pessoa no repositorio
-	public void inserir(Pessoa entrada) throws cpfJaCadastradoException {
+	public void inserir(Pessoa entrada) throws CpfJaCadastradoException {
 		if(existe(entrada.getCpf())){
-			throw new cpfJaCadastradoException();
+			throw new CpfJaCadastradoException();
 		}
 		else{
 			if(this.pessoa==null){
@@ -41,41 +37,36 @@ public class RepositorioPessoasLista implements RepositorioPessoas {
 			}
 		}
 	}
-	
-	//procura pessoa no repositório 
+
 	public Pessoa procurar(String cpf) throws CpfNaoCadastradoException {
-		Pessoa pessoa=null;
 		if(this.pessoa!=null){
 			if(this.pessoa.getCpf().equals(cpf)){
-				pessoa =  this.pessoa;
+				return this.pessoa;
 			}else{
-				pessoa =  this.proximo.procurar(cpf);
+				return this.proximo.procurar(cpf);
 			}
-		}
-		if(pessoa==null){
-			throw new CpfNaoCadastradoException();
 		}else{
-			return pessoa;
+			throw new CpfNaoCadastradoException();
 		}
 	}
 
-	//atualiza pessoa no repositorio, substituindo por um novo objeto pessoa
 	public void atualizar(String cpf, Pessoa pessoa) throws CpfNaoCadastradoException {
-		if(this.pessoa!=null){
-			if(this.pessoa.getCpf().equals(cpf)){
-				this.pessoa=pessoa;
-			}else{
-				this.proximo.procurar(cpf);
-			}
-		}else{
+		if(!existe(cpf)){
 			throw new CpfNaoCadastradoException();
+		}else{
+			if(this.pessoa!=null){
+				if(this.pessoa.getCpf().equals(cpf)){
+					this.pessoa=pessoa;
+				}else{
+					this.proximo.atualizar(cpf,pessoa);
+				}
+			}
 		}
 	}
-	
-	//remove pessoa do repositorio
-	public void remover(String cpf) throws cpfNaoCadastradoException {
+
+	public void remover(String cpf) throws CpfNaoCadastradoException {
 		if(!existe(cpf)){
-			throw new cpfNaoCadastradoException();
+			throw new CpfNaoCadastradoException();
 		}else{
 			if(this.pessoa!=null){
 				if(this.pessoa.getCpf().equals(cpf)){

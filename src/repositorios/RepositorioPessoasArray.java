@@ -1,8 +1,8 @@
 package repositorios;
 
 import classesBasicas.Pessoa;
-import exceptions.cpfJaCadastradoException;
-import exceptions.cpfNaoCadastradoException;
+import exceptions.CpfJaCadastradoException;
+import exceptions.CpfNaoCadastradoException;
 import interfaces.RepositorioPessoas;
 
 public class RepositorioPessoasArray implements RepositorioPessoas {
@@ -14,10 +14,10 @@ public class RepositorioPessoasArray implements RepositorioPessoas {
 		this.pessoas=new Pessoa[tamanho];
 		this.indice=0;
 	}
-	public int getTamanho(){ //descobre o tamanho do repositorio
+	public int getTamanho(){
 		return pessoas.length;
 	}
-	public void duplicarTamanho(){ //duplica o tamanho
+	public void duplicarTamanho(){
 		Pessoa[] aux = new Pessoa[tamanho*2];
 		for(int i=0;i<this.tamanho;i++){
 			aux[i]=this.pessoas[i];
@@ -25,10 +25,10 @@ public class RepositorioPessoasArray implements RepositorioPessoas {
 		this.pessoas=aux;
 		this.tamanho=this.tamanho*2;
 	}
-	public boolean estaCheio(){ //verifica se esta cheio
+	public boolean estaCheio(){
 		return this.indice==this.tamanho;
 	}
-	public boolean existe(String cpf){ //verifica se existe
+	public boolean existe(String cpf){
 		if(estaCheio()){
 			duplicarTamanho();	
 		}
@@ -41,20 +41,20 @@ public class RepositorioPessoasArray implements RepositorioPessoas {
 		return existe;
 	}
 
-	public void inserir(Pessoa pessoa) throws cpfJaCadastradoException { //insere uma pessoa
+	public void inserir(Pessoa pessoa) throws CpfJaCadastradoException {
 		if(existe(pessoa.getCpf())){
-			throw new cpfJaCadastradoException();
+			throw new CpfJaCadastradoException();
 		}else{
 			pessoas[this.indice]=pessoa;
 			this.indice++;
 		}
 	}
 
-	public Pessoa procurar(String cpf) throws cpfNaoCadastradoException { //procura uma pessoa
+	public Pessoa procurar(String cpf) throws CpfNaoCadastradoException {
 		boolean achei=false;
 		Pessoa resultado=null;
 		if(!existe(cpf)){
-			throw new cpfNaoCadastradoException();
+			throw new CpfNaoCadastradoException();
 		}else{
 			for(int i=0;i<this.indice && !achei;i++){
 				if(this.pessoas[i].getCpf().equals(cpf)){
@@ -66,10 +66,10 @@ public class RepositorioPessoasArray implements RepositorioPessoas {
 		}
 	}
 
-	public void atualizar(String cpf, Pessoa pessoa) throws cpfNaoCadastradoException { //atualiza a pessoa
+	public void atualizar(String cpf, Pessoa pessoa) throws CpfNaoCadastradoException {
 		boolean achei=false;
 		if(!existe(cpf)){
-			throw new cpfNaoCadastradoException();
+			throw new CpfNaoCadastradoException();
 		}else{
 			for(int i=0;i<this.indice && !achei;i++){
 				if(this.pessoas[i].getCpf().equals(cpf)){
@@ -80,10 +80,10 @@ public class RepositorioPessoasArray implements RepositorioPessoas {
 		}
 	}
 
-	public void remover(String cpf) throws cpfNaoCadastradoException { //remove uma pessoa
+	public void remover(String cpf) throws CpfNaoCadastradoException {
 		boolean achei=false;
 		if(!existe(cpf)){
-			throw new cpfNaoCadastradoException();
+			throw new CpfNaoCadastradoException();
 		}else{
 			for(int i=0;i<this.indice && !achei;i++){
 				if(this.pessoas[i].getCpf().equals(cpf)){

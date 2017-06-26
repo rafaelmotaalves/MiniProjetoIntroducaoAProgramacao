@@ -2,6 +2,7 @@ package repositorios;
 
 import classesBasicas.Aeroporto;
 import exceptions.AeroportoNotFoundException;
+import exceptions.CpfNaoCadastradoException;
 import interfaces.RepositorioAeroportos;
 
 public class RepositorioAeroportoLista implements RepositorioAeroportos {
@@ -13,7 +14,7 @@ public class RepositorioAeroportoLista implements RepositorioAeroportos {
 		this.proximo = null;
 	}
 	
-	public void inserir(Aeroporto aeroporto) { //insere um aeroporto ao repositorio
+	public void inserir(Aeroporto aeroporto) {
 		if(this.aeroporto == null){
 			this.aeroporto = aeroporto;
 			this.proximo = new RepositorioAeroportoLista();
@@ -23,24 +24,20 @@ public class RepositorioAeroportoLista implements RepositorioAeroportos {
 
 	}
 
-	public Aeroporto procurar(String codigo) throws AeroportoNotFoundException { //procura um aeroporto
-		Aeroporto aeroporto = null;
-		boolean achou = false;
-		
-		if(this.aeroporto != null && !achou){
-			if(this.aeroporto.getCodigo().equals(codigo)){
-				aeroporto = this.aeroporto;
-				achou = true;
-			} else {
-				this.proximo.procurar(codigo);
+	public Aeroporto procurar(String cod) throws AeroportoNotFoundException {
+		if(this.aeroporto!=null){
+			if(this.aeroporto.getCodigo().equals(cod)){
+				return this.aeroporto;
+			}else{
+				return this.proximo.procurar(cod);
 			}
-		} else {
+		}else{
 			throw new AeroportoNotFoundException();
 		}
-		return aeroporto;
 	}
 
-	public void atualizar(String codigo, Aeroporto aeroporto) throws AeroportoNotFoundException { //atualiza um aeroporto
+
+	public void atualizar(String codigo, Aeroporto aeroporto) throws AeroportoNotFoundException {
 		boolean achou = false;
 		
 		if(this.aeroporto != null && !achou){
@@ -56,7 +53,7 @@ public class RepositorioAeroportoLista implements RepositorioAeroportos {
 
 	}
 
-	public void remover(String codigo) throws AeroportoNotFoundException { //remove um aeroporto
+	public void remover(String codigo) throws AeroportoNotFoundException {
 		boolean achou = false;
 		
 		if(this.aeroporto != null && !achou){

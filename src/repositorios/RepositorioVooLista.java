@@ -1,7 +1,6 @@
 package repositorios;
-import classesBasicas.Voo;
-import exceptions.VooJaCadastradoException;
-import exceptions.VooNaoCadastradoException;
+import classesBasicas.*;
+import exceptions.*;
 import interfaces.RepositorioVoo;
 
 public class RepositorioVooLista implements RepositorioVoo{
@@ -22,8 +21,6 @@ public class RepositorioVooLista implements RepositorioVoo{
 			}else{
 				this.proximo.achou(num);
 			}
-		}else{
-			achou = false;
 		}
 		return achou;
 	}
