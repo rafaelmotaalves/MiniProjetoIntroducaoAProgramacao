@@ -13,7 +13,7 @@ public class RepositorioAeroportoArray implements RepositorioAeroportos {
 		indice = 0;
 	}
 	
-	public void inserir(Aeroporto aeroporto) {
+	public void inserir(Aeroporto aeroporto) { //insere um aeroporto ao repositorio
 		this.aeroportos [indice] = aeroporto;
 		this.indice++;
 		if (indice >= this.aeroportos.length){
@@ -25,7 +25,7 @@ public class RepositorioAeroportoArray implements RepositorioAeroportos {
 		}
 	}
 
-	public Aeroporto procurar(String codigo) throws AeroportoNotFoundException {
+	public Aeroporto procurar(String codigo) throws AeroportoNotFoundException { //procura um aeroporto
 		Aeroporto aeroporto = null;
 		boolean achou = false;
 		for(int i = 0; (i < this.indice) && !achou; i++){
@@ -41,7 +41,7 @@ public class RepositorioAeroportoArray implements RepositorioAeroportos {
 		}
 	}
 
-	public void atualizar(String codigo, Aeroporto aeroporto) throws AeroportoNotFoundException {
+	public void atualizar(String codigo, Aeroporto aeroporto) throws AeroportoNotFoundException { //atualiza um aeroporto
 		boolean achou = false;
 		for(int i = 0; (i < this.indice) && !achou; i++){
 			if(codigo.equals(aeroportos[i].getCodigo())){
@@ -54,7 +54,7 @@ public class RepositorioAeroportoArray implements RepositorioAeroportos {
 		}
 	}
 
-	public void remover(String codigo) throws AeroportoNotFoundException {
+	public void remover(String codigo) throws AeroportoNotFoundException { //remove um aeroporto do repositorio
 		int indiceprocurado = this.indice;
 		boolean achou = false;
 		for(int i = 0; (i < this.indice) && !achou; i++){
