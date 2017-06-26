@@ -106,7 +106,7 @@ public class RepositorioBagagemArray implements RepositorioBagagem {
 		for (int i = 0; i <= index; i++) {
 			if (this.bagagem[i].getVoo().getNum() == voo.getNum()) {
 				int cod = this.bagagem[i].getCod();
-				remover(cod);
+				this.remover(cod);
 			}
 		}
 

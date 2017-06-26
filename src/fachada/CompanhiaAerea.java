@@ -118,11 +118,11 @@ public class CompanhiaAerea {
 	public void executarVoo(String numero) throws AeroportoNotFoundException, AeroportoLotadoException, cpfNaoCadastradoException, pilotoInvalidoException, IdNaoCadastradaException, CapacidadePassageirosInvalidoException, VooNaoCadastradoException, NumVooInvalidoException, AvioesIndisponiveisNoAeroportoException, BagagemNaoExisteException{
 		String codigoAeroportoBase = "REC";
 		this.aeroportos.decola(codigoAeroportoBase);//Aeroporto base de operaçoes do programa
-		this.aeroportos.pousa(voos.procurarVoo(numero).getDestino().getCodigo());
-		this.pessoas.realocarPiloto(voos.procurarVoo(numero).getPiloto().getCpf(), voos.procurarVoo(numero).getDestino());
-		Aviao aviaoAtualizado = new Aviao(voos.procurarVoo(numero).getAviao().getID(), voos.procurarVoo(numero).getAviao().getModelo(),voos.procurarVoo(numero).getAviao().getCapacidade(), voos.procurarVoo(numero).getDestino());
-		this.avioes.atualizarDadosAviao(voos.procurarVoo(numero).getAviao().getID(), aviaoAtualizado);
-		this.bagagens.retirarBagagens(voos.procurarVoo(numero));
-		this.voos.removerVoo(voos.procurarVoo(numero).getNum());
+		//this.aeroportos.pousa(this.voos.procurarVoo(numero).getDestino().getCodigo());
+		this.pessoas.realocarPiloto(this.voos.procurarVoo(numero).getPiloto().getCpf(), this.voos.procurarVoo(numero).getDestino());
+		Aviao aviaoAtualizado = new Aviao(this.voos.procurarVoo(numero).getAviao().getID(), this.voos.procurarVoo(numero).getAviao().getModelo(),this.voos.procurarVoo(numero).getAviao().getCapacidade(), this.voos.procurarVoo(numero).getDestino());
+		this.avioes.atualizarDadosAviao(this.voos.procurarVoo(numero).getAviao().getID(), aviaoAtualizado);
+		this.bagagens.retirarBagagens(this.voos.procurarVoo(numero));
+		this.voos.removerVoo(this.voos.procurarVoo(numero).getNum());
 	}
 }

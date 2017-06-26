@@ -68,6 +68,12 @@ public class Programa {
 					System.out.println(e.getMessage());
 			}
 			
+			try {
+				companhiaAerea.cadastrarAeroporto(aeroporto);
+			} catch (CapacidadeAeroportoInvalidaException | AeroportoJaCadastradoException e) {
+					System.out.println(e.getMessage());
+			}
+			
 			aeroporto = new Aeroporto("Los Angeles","LAX", 50, 10000);
 			try {
 				companhiaAerea.cadastrarAeroporto(aeroporto);
@@ -77,6 +83,11 @@ public class Programa {
 			
 			try {
 				aviao = new Aviao(1, "Boeing-747", 100, companhiaAerea.procurarAeroporto("REC"));
+				try {
+					companhiaAerea.cadastrarAviao(aviao);
+				} catch (AviaoJaCadastradoException | CapacidadePassageirosInvalidoException e) {
+					System.out.println(e.getMessage());
+				}
 				try {
 					companhiaAerea.realocarAviao("REC");
 				} catch (AeroportoNotFoundException | AeroportoLotadoException e) {
