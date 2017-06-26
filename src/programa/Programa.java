@@ -118,7 +118,7 @@ public class Programa {
 			}
 			
 			try {
-				voo = new Voo("REC-LAX", "14:00", 2000, piloto, companhiaAerea.procurarAviao(1), companhiaAerea.procurarAeroporto("LAX"));
+				voo = new Voo("0001", "14:00", 2000, piloto, companhiaAerea.procurarAviao(1), companhiaAerea.procurarAeroporto("LAX"));
 				try {
 					companhiaAerea.cadastrarVoo(voo);
 				} catch (VooJaCadastradoException | NumVooInvalidoException e) {
@@ -129,7 +129,7 @@ public class Programa {
 			}
 			
 			try {
-				bagagem = new Bagagem(1, 10.0, companhiaAerea.procurarVoo("REC-LAX"), companhiaAerea.procurarAeroporto("LAX"), companhiaAerea.procurarPassageiro("001.002.005-12"));
+				bagagem = new Bagagem(1, 10.0, companhiaAerea.procurarVoo("0001"), companhiaAerea.procurarAeroporto("LAX"), companhiaAerea.procurarPassageiro("001.002.005-12"));
 			} catch (VooNaoCadastradoException | NumVooInvalidoException | AeroportoNotFoundException
 					| cpfNaoCadastradoException | passageiroInvalidoException e) {
 				System.out.println(e.getMessage());
