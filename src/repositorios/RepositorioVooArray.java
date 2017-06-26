@@ -1,7 +1,8 @@
 package repositorios;
 import classesBasicas.Voo;
-import exceptions.*;
-import interfaces.*;
+import exceptions.VooJaCadastradoException;
+import exceptions.VooNaoCadastradoException;
+import interfaces.RepositorioVoo;
 
 public class RepositorioVooArray implements RepositorioVoo{
 
