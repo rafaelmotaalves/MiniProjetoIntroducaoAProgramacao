@@ -1,6 +1,7 @@
 package repositorios;
 
-import classesBasicas.*;
+import classesBasicas.Bagagem;
+import classesBasicas.Voo;
 import exceptions.BagagemJaExistenteException;
 import exceptions.BagagemNaoExisteException;
 import exceptions.BagagemPesoException;
