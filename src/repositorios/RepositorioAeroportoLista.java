@@ -13,7 +13,7 @@ public class RepositorioAeroportoLista implements RepositorioAeroportos {
 		this.proximo = null;
 	}
 	
-	public void inserir(Aeroporto aeroporto) {
+	public void inserir(Aeroporto aeroporto) { //insere um aeroporto ao repositorio
 		if(this.aeroporto == null){
 			this.aeroporto = aeroporto;
 			this.proximo = new RepositorioAeroportoLista();
@@ -23,7 +23,7 @@ public class RepositorioAeroportoLista implements RepositorioAeroportos {
 
 	}
 
-	public Aeroporto procurar(String codigo) throws AeroportoNotFoundException {
+	public Aeroporto procurar(String codigo) throws AeroportoNotFoundException { //procura um aeroporto
 		Aeroporto aeroporto = null;
 		boolean achou = false;
 		
@@ -40,7 +40,7 @@ public class RepositorioAeroportoLista implements RepositorioAeroportos {
 		return aeroporto;
 	}
 
-	public void atualizar(String codigo, Aeroporto aeroporto) throws AeroportoNotFoundException {
+	public void atualizar(String codigo, Aeroporto aeroporto) throws AeroportoNotFoundException { //atualiza um aeroporto
 		boolean achou = false;
 		
 		if(this.aeroporto != null && !achou){
@@ -56,7 +56,7 @@ public class RepositorioAeroportoLista implements RepositorioAeroportos {
 
 	}
 
-	public void remover(String codigo) throws AeroportoNotFoundException {
+	public void remover(String codigo) throws AeroportoNotFoundException { //remove um aeroporto
 		boolean achou = false;
 		
 		if(this.aeroporto != null && !achou){
