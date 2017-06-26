@@ -128,7 +128,12 @@ public class Programa {
 				System.out.println(e.getMessage());
 			}
 			
-			
+			try {
+				bagagem = new Bagagem(1, 10.0, companhiaAerea.procurarVoo("REC-LAX"), companhiaAerea.procurarAeroporto("LAX"), companhiaAerea.procurarPassageiro("001.002.005-12"));
+			} catch (VooNaoCadastradoException | NumVooInvalidoException | AeroportoNotFoundException
+					| cpfNaoCadastradoException | passageiroInvalidoException e) {
+				System.out.println(e.getMessage());
+			}
 			
 		}catch(FileNotFoundException e){
 			System.out.println(e.getMessage());
