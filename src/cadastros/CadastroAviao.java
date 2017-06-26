@@ -1,6 +1,8 @@
 package cadastros;
 import classesBasicas.Aviao;
-import exceptions.*;
+import exceptions.AviaoJaCadastradoException;
+import exceptions.CapacidadePassageirosInvalidoException;
+import exceptions.IdNaoCadastradaException;
 import interfaces.RepositorioAviao;
 public class CadastroAviao {
 	private RepositorioAviao aviaos;
@@ -16,25 +18,25 @@ public class CadastroAviao {
 		aviaos.inserir(aviao);
 		}	
 	}
-	public void removerAviao(int ID) throws IdNaoCadastradaException, CapacidadePassageirosInvalidoException{ //Remove um avião
-		if(aviaos.procurar(ID).getCapacidade()<=0){
+	public void removerAviao(int id) throws IdNaoCadastradaException, CapacidadePassageirosInvalidoException{ //Remove um avião
+		if(aviaos.procurar(id).getCapacidade()<=0){
 			throw new CapacidadePassageirosInvalidoException();
 		}
 		else{
-			aviaos.remover(ID);
+			aviaos.remover(id);
 		}
 	}
-	public void atualizarDadosAviao(int ID, Aviao aviao) throws IdNaoCadastradaException, CapacidadePassageirosInvalidoException{ //Atualiza os dados
+	public void atualizarDadosAviao(int id, Aviao aviao) throws IdNaoCadastradaException, CapacidadePassageirosInvalidoException{ //Atualiza os dados
 		if(aviao.getCapacidade()<=0){
 			throw new CapacidadePassageirosInvalidoException();
 		}
 		else{
-			aviaos.atualizar(ID, aviao);
+			aviaos.atualizar(id, aviao);
 		}
 	}
 	
-	public Aviao procurarAviao(int ID) throws IdNaoCadastradaException{ //Procura um avião
-		return this.aviaos.procurar(ID);
+	public Aviao procurarAviao(int id) throws IdNaoCadastradaException{ //Procura um avião
+		return this.aviaos.procurar(id);
 	}
 
 
