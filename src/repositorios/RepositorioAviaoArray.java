@@ -1,6 +1,7 @@
 package repositorios;
 import classesBasicas.Aviao;
-import exceptions.*;
+import exceptions.AviaoJaCadastradoException;
+import exceptions.IdNaoCadastradaException;
 import interfaces.RepositorioAviao;
 public class RepositorioAviaoArray implements RepositorioAviao {
 
