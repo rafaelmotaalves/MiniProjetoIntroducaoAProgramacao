@@ -34,7 +34,7 @@ public class CompanhiaAerea {
 		this.pessoas.contratarFuncionario(funcionario);
 	}
 	
-	public void cadastrarBagagem(Bagagem bagagem) throws bagagemJaExistenteException, bagagemPesoException{
+	public void cadastrarBagagem(Bagagem bagagem) throws BagagemJaExistenteException, BagagemPesoException{
 		this.bagagens.cadastrarBagagem(bagagem);
 	}
 	
@@ -107,12 +107,16 @@ public class CompanhiaAerea {
 		this.pessoas.realocarPiloto(cpf, local);
 	}
 	
+	public void realocarAviao(String codigoAeroporto) throws AeroportoNotFoundException, AeroportoLotadoException{
+		this.aeroportos.pousa(codigoAeroporto);
+	}
+	
 	public void embarcarPassageiro(String numeroVoo, String cpfPassageiro) throws VooNaoCadastradoException, NumVooInvalidoException, CapacidadePassageirosInvalidoException, cpfNaoCadastradoException, passageiroInvalidoException{
 		this.voos.embarcarPassageiro(numeroVoo, pessoas.BuscarPassageiro(cpfPassageiro));
 	}
 	
 	//!!!!Metodo nao finalizado!!!!
-	public void executarVoo(String numero) throws AeroportoNotFoundException, AeroportoLotadoException, cpfNaoCadastradoException, pilotoInvalidoException, IdNaoCadastradaException, CapacidadePassageirosInvalidoException, VooNaoCadastradoException, NumVooInvalidoException, AvioesIndisponiveisNoAeroportoException{
+	public void executarVoo(String numero) throws AeroportoNotFoundException, AeroportoLotadoException, cpfNaoCadastradoException, pilotoInvalidoException, IdNaoCadastradaException, CapacidadePassageirosInvalidoException, VooNaoCadastradoException, NumVooInvalidoException, AvioesIndisponiveisNoAeroportoException, BagagemNaoExisteException{
 		String codigoAeroportoBase = "REC";
 		this.aeroportos.decola(codigoAeroportoBase);//Aeroporto base de operaçoes do programa
 		this.aeroportos.pousa(voos.procurarVoo(numero).getDestino().getCodigo());

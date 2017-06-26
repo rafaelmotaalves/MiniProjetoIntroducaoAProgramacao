@@ -102,7 +102,7 @@ public class Programa {
 				System.out.println(e.getMessage());
 			}
 			
-			passageiro = new Passageiro("001.002.004-12", "Marcos Augusto");
+			passageiro = new Passageiro("001.002.005-12", "Marcos Augusto");
 			try {
 				companhiaAerea.cadastrarPassageiro(passageiro);
 			} catch (cpfJaCadastradoException | cpfInvalidoException | passageiroInvalidoException e) {
@@ -110,7 +110,7 @@ public class Programa {
 			}
 			
 			
-			passageiro = new Passageiro("001.002.005-12", "Marcos Augusto");
+			passageiro = new Passageiro("001.002.006-12", "Maria Freitas");
 			try {
 				companhiaAerea.cadastrarPassageiro(passageiro);
 			} catch (cpfJaCadastradoException | cpfInvalidoException | passageiroInvalidoException e) {
@@ -132,6 +132,28 @@ public class Programa {
 				bagagem = new Bagagem(1, 10.0, companhiaAerea.procurarVoo("0001"), companhiaAerea.procurarAeroporto("LAX"), companhiaAerea.procurarPassageiro("001.002.005-12"));
 			} catch (VooNaoCadastradoException | NumVooInvalidoException | AeroportoNotFoundException
 					| cpfNaoCadastradoException | passageiroInvalidoException e) {
+				System.out.println(e.getMessage());
+			}
+			
+			try {
+				companhiaAerea.embarcarPassageiro("0001", "001.002.005-12");
+			} catch (VooNaoCadastradoException | NumVooInvalidoException | CapacidadePassageirosInvalidoException
+					| cpfNaoCadastradoException | passageiroInvalidoException e) {
+				System.out.println(e.getMessage());
+			}
+			
+			try {
+				companhiaAerea.embarcarPassageiro("0001", "001.002.006-12");
+			} catch (VooNaoCadastradoException | NumVooInvalidoException | CapacidadePassageirosInvalidoException
+					| cpfNaoCadastradoException | passageiroInvalidoException e) {
+				System.out.println(e.getMessage());
+			}
+			
+			try {
+				companhiaAerea.executarVoo("0001");
+			} catch (AeroportoNotFoundException | AeroportoLotadoException | cpfNaoCadastradoException
+					| pilotoInvalidoException | IdNaoCadastradaException | CapacidadePassageirosInvalidoException
+					| VooNaoCadastradoException | NumVooInvalidoException | AvioesIndisponiveisNoAeroportoException | BagagemNaoExisteException e) {
 				System.out.println(e.getMessage());
 			}
 			
